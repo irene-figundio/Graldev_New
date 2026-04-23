@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ARTitle" xml:space="preserve">
+    <value>Gralcall</value>
+  </data>
+  <data name="LudirexTitle" xml:space="preserve">
+    <value>Ludirex</value>
+  </data>
+  <data name="Quote1AR" xml:space="preserve">
+    <value>Identify target images :&lt;br /&gt;
+                         Choose, with our support, one or more target images.</value>
+  </data>
+  <data name="Quote2AR" xml:space="preserve">
+    <value>Images, videos, 3D objects :&lt;br /&gt;
+                         Show what you like by framing target images.</value>
+  </data>
+  <data name="Quote3AR" xml:space="preserve">
+    <value>Customizable:&lt;br /&gt;
+                         The graphical interface is totally customizable.</value>
+  </data>
+  <data name="Quote4AR" xml:space="preserve">
+    <value>Back Office management:&lt;br /&gt;
+                         Consult your Backoffice for an analysis of views/scans.</value>
+  </data>
+  <data name="GralCallDescripton" xml:space="preserve">
+    <value>Graldev is present in the world of Augmented Reality with the Gralcall project.&lt;br /&gt;
+                 Gralcall is a web application initially born from a project in collaboration with our partner Associazione Manthano ETS.&lt;br /&gt;
+                 We have in fact created a tourist and cultural itinerary to describe some Italian villages with the help of AR and informative videos.&lt;br /&gt;
+                 Today Gralcall has evolved and is now a versatile and customizable tool for any need.&lt;br /&gt;
+                 The areas of use of Gralcall range from tourism to catering, from advertising to gaming.&lt;br /&gt;
+                 Contact us and we will offer you our support to realize your Augmented Reality project!&lt;br /&gt;</value>
+  </data>
+  <data name="ARSubTitle" xml:space="preserve">
+    <value>Our Augmented Reality offer</value>
+  </data>
+  <data name="GeordieTitle" xml:space="preserve">
+    <value>Geordie</value>
+  </data>
+  <data name="GeordieSubTitle" xml:space="preserve">
+    <value>Our solution to help you manage your online sales.</value>
+  </data>
+  <data name="GeordieDescription" xml:space="preserve">
+    <value>Manage your stores in an organized and simple way.
+Geordie is a multiplatform web app that can be used on PCs, smartphones and tablets, highly customizable according to your needs.&lt;br/&gt;
+Geordie guides you in bulk management of your listings and controls exclusive user-level access to orders so you don't make mistakes.&lt;br/&gt;
+Geordie updates automatically, connecting 24/365 to the most popular sales platforms, and allows you to communicate with them also for collections, labels and courier tracking numbers.&lt;br/&gt;
+Premium management requires our already trained staff to do all the work for you.&lt;br/&gt;
+Contact us for a personalized demo!</value>
+  </data>
+  <data name="Quote1Geordie" xml:space="preserve">
+    <value>Customizable web app&lt;br/&gt;
+Modular web app with functions that can be activated according to needs</value>
+  </data>
+  <data name="Quote2Geordie" xml:space="preserve">
+    <value>Safe&lt;br/&gt;
+Protection against unauthorized access with instant sending of security emails and the possibility of IP blocking</value>
+  </data>
+  <data name="Quote3Geordie" xml:space="preserve">
+    <value>Easy to use&lt;br/&gt;
+Graphical interface designed to simplify the use of the entire software</value>
+  </data>
+  <data name="Quote4Geordie" xml:space="preserve">
+    <value>Automated&lt;br/&gt;
+Automatic scheduled reception of new orders, setting of shipping dates and tracking numbers</value>
+  </data>
+  <data name="GalleryGordieDesc" xml:space="preserve">
+    <value>Some screenshots from Geordie</value>
+  </data>
+  <data name="Reviews1Geordie" xml:space="preserve">
+    <value>Since Geordie has been managing our online stores, not only have sales increased significantly, but the entire ordering system has accelerated. Geordie, in fact, collects and manages all orders, automatically saving them in the management system and constantly updating them. &lt;br/&gt; Since Geordie has been working for us we no longer have problems with multiple shipments of goods as it allows a single operator to take charge of the order.</value>
+  </data>
+  <data name="Reviews2Geordie" xml:space="preserve">
+    <value>Geordie has contributed to the increase in our turnover. It is a very simple and intuitive management software with excellent usability. It was possible to request customized features for our online shop.&lt;br/&gt; Thanks to high customization, our workflow is always under control so as to eliminate errors and speed up processes.</value>
+  </data>
+  <data name="ArGalleryDesc" xml:space="preserve">
+    <value>An example of an AR project created with Gralcall in collaboration with our cultural partner Associazione Manthano ETS</value>
+  </data>
+  <data name="LudirexSubtitle" xml:space="preserve">
+    <value>The social network designed for the gaming community</value>
+  </data>
+  <data name="LudirexDescription" xml:space="preserve">
+    <value>Through a social platform, Ludirex wants to represent the main meeting point between online players from all over the world. &lt;br /&gt;
+                 A "digital courtyard" for gamers where they can interact and get to know each other, find playmates with whom to collaborate, take sides or challenge each other. &lt;br /&gt;
+                 We therefore propose a new model of socialization which, around the passion for a game, encourages the birth of new acquaintances and new bonds.&lt;br /&gt;</value>
+  </data>
+  <data name="LudiSocial" xml:space="preserve">
+    <value>See also on social media:</value>
+  </data>
+</root>

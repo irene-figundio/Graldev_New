@@ -1,0 +1,172 @@
+﻿@using WebSite.Resources;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using WebSite.Model;
+
+@inject IOptions<AppInfo> AppInfo
+@inject IOptions<ContactsInfo> ContactsInfo
+@inject IOptions<MailSettings> MailSettings
+@model string
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Geordie";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+
+
+
+@section styleImport {
+    <script src="~/Scripts/Project/AR/dropzone.min.js"></script>
+    <script src="~/Scripts/Project/AR/dist-dev/mindar-image.prod.js"></script>
+    <script src="~/Scripts/Project/AR/ARCompileHelper.js"></script>
+    <link rel="stylesheet" href="~/Scripts/Project/AR/dropzone.min.js">
+}
+
+<div class="landing-page" style="display:none;background: #f9f6f6fa;" id="GeordieLandingMobile">
+    <div class="content">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="info">
+                <h1>Geordie</h1>
+                <p>@Localizer[ProjectsResource.GeordieSubTitle]</p>                
+            </div>
+            <div class="image">
+                <img src="~/asset/img/geordiecopertina1.png" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="background geordie-back parallax" id="GeordieLandingDesktop">
+</div>
+<div class="background geordie-back parallax" id="GeordieLandingDesktop">
+    <br />
+</div>
+<section style="background: #f9f6f6fa;">
+    <div class="container">
+        <br />
+        <div class="row">
+            <h1><strong>@Localizer[@ProjectsResource.GeordieTitle]</strong><br /></h1>           
+            <div class="block"></div>
+            <p>
+                @Html.Raw(@ProjectsResource.GeordieDescription)
+            </p>
+        </div>
+        <br />
+        <div class="row">
+            <div class="quoteLoop">
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote1Geordie)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote2Geordie)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote3Geordie)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote4Geordie)
+                    </h5>
+                </blockquote>
+            </div>
+        </div>
+
+    </div>
+    <br />
+</section>
+<div class="background  geordie-back  parallax" id="GeordieLandingDesktop">
+    <br />
+</div>
+<section id="gallery" style="background: #f9f6f6fa;">
+    <div class="container" id="wrapper">
+        <br />
+        <h1>Gallery</h1>
+        <div class="row">
+            <h3>@Localizer[ProjectsResource.GalleryGordieDesc]</h3>
+            <div class="block"></div>           
+        </div>
+        <div class="block"></div>
+
+        <div class="row " style="display: flow-root;justify-content: center;object-fit:scale-down;">
+            @*
+            <div class="three columns "><img src="~/asset/img/Trivigno/1_res.png" class="image" onclick="openModal();currentSlide(1)" alt="Work Two" /></div>
+            <div class="three columns "> <img src="~/asset/img/Trivigno/2.jpg" class="image" onclick="openModal();currentSlide(2)" alt="Work Three" /></div>
+            <div class="three columns "> <img src="~/asset/img/Trivigno/3.jpg" class="image" onclick="openModal();currentSlide(3)" alt="Work Four" /></div>
+            *@
+            <div class="three columns">
+                <a href="~/asset/img/geordie_screenshots/dashboard.png" data-lightbox="roadtrip"><img src="~/asset/img/geordie_screenshots/dashboard.png" class="image" /></a>
+            </div>
+            <div class="three columns ">
+                <a href="~/asset/img/geordie_screenshots/Gestione magazzino.png" data-lightbox="roadtrip"><img src="~/asset/img/geordie_screenshots/Gestione magazzino.png" class="image" /></a>
+            </div>
+            <div class="three columns ">
+                <a href="~/asset/img/geordie_screenshots/Gestione ordine.png" data-lightbox="roadtrip"><img src="~/asset/img/geordie_screenshots/Gestione ordine.png" class="image" /></a>
+            </div>
+
+        </div>
+        <div class="row " style="margin-top: 30px;">
+
+            <div class="three columns ">
+                <a href="~/asset/img/geordie_screenshots/Gestione ordini.png" data-lightbox="roadtrip"><img src="~/asset/img/geordie_screenshots/Gestione ordini.png" class="image" /></a>
+            </div>
+            <div class="three columns ">
+                <a href="~/asset/img/geordie_screenshots/Nuovo ordine.png" data-lightbox="roadtrip"><img src="~/asset/img/geordie_screenshots/Nuovo ordine.png" class="image" /></a>
+            </div>
+        </div>
+    </div>
+    <br />
+</section>
+
+<div class="background  geordie-back  parallax" id="GeordieLandingDesktop">
+    <br />
+</div>
+<section style="background: #f9f6f6fa;">
+    <div class="container">
+        <br />
+        <div class="row">
+            <h1><strong>@Localizer[MainResource.CustomersPartners]</strong><br /></h1>
+            <div class="block"></div>           
+        </div>
+        <br />
+        <div class="row">
+            <div class="six columns">
+                <h2><strong> Soncar S.r.l.</strong><br /></h2>
+                <blockquote>
+                    <p>
+                        <i>
+                        &quot;
+                        @Html.Raw(@ProjectsResource.Reviews1Geordie)
+                        &quot;
+                        </i>
+                    </p>
+                </blockquote>
+            </div>
+            <div class="six columns">
+                <h2><strong> Dorenah </strong><br /></h2>
+                <blockquote>
+                    <p>
+                        <i>
+                            &quot;
+                            @Html.Raw(@ProjectsResource.Reviews2Geordie)
+                            &quot;
+                        </i>
+                      
+                    </p>
+                </blockquote>
+                  
+               
+            </div>
+        </div>
+
+    </div>
+    <br />
+</section>
+<div class="background  geordie-back  parallax" id="GeordieLandingDesktop">
+    <br />
+</div>

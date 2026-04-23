@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+		Microsoft ResX Schema
+
+		Version 1.3
+
+		The primary goals of this format is to allow a simple XML format 
+		that is mostly human readable. The generation and parsing of the 
+		various data types are done through the TypeConverter classes 
+		associated with the data types.
+
+		Example:
+
+		... ado.net/XML headers & schema ...
+		<resheader name="resmimetype">text/microsoft-resx</resheader>
+		<resheader name="version">1.3</resheader>
+		<resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+		<resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+		<data name="Name1">this is my long string</data>
+		<data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+		<data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+			[base64 mime encoded serialized .NET Framework object]
+		</data>
+		<data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+			[base64 mime encoded string representing a byte array form of the .NET Framework object]
+		</data>
+
+		There are any number of "resheader" rows that contain simple 
+		name/value pairs.
+
+		Each data row contains a name, and value. The row also contains a 
+		type or mimetype. Type corresponds to a .NET class that support 
+		text/value conversion through the TypeConverter architecture. 
+		Classes that don't support this are serialized and stored with the 
+		mimetype set.
+
+		The mimetype is used for serialized objects, and tells the 
+		ResXResourceReader how to depersist the object. This is currently not 
+		extensible. For a given mimetype the value must be set accordingly:
+
+		Note - application/x-microsoft.net.object.binary.base64 is the format 
+		that the ResXResourceWriter will generate, however the reader can 
+		read any of the formats listed below.
+
+		mimetype: application/x-microsoft.net.object.binary.base64
+		value   : The object must be serialized with 
+			: System.Serialization.Formatters.Binary.BinaryFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.soap.base64
+		value   : The object must be serialized with 
+			: System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+			: and then encoded with base64 encoding.
+
+		mimetype: application/x-microsoft.net.object.bytearray.base64
+		value   : The object must be serialized into a byte array 
+			: using a System.ComponentModel.TypeConverter
+			: and then encoded with base64 encoding.
+	-->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+    <comment>Contact Us</comment>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About Us</value>
+    <comment>About Us</comment>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value></value>
+    <comment>Projects</comment>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value></value>
+    <comment>Our Clients</comment>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value></value>
+    <comment>Our Position</comment>
+  </data>
+  <data name="SubTitle" xml:space="preserve">
+    <value></value>
+    <comment>Enterprise Systems Integration</comment>
+  </data>
+  <data name="WorkTeamDescription" xml:space="preserve">
+    <value>Our work team brings together the twenty-year experience of those who have experienced the countless technological changes firsthand with the enthusiasm and desire for innovation of our youngest collaborators.</value>
+    <comment>Our work team brings together the twenty-year experience of those who have experienced countless technological changes first-hand with the enthusiasm and desire for innovation of our youngest collaborators.</comment>
+  </data>
+  <data name="WhoWeAreTitle" xml:space="preserve">
+    <value>&lt;em&gt;Who we are&lt;/em&gt;</value>
+    <comment>&lt;em&gt;Who we are&lt;/em&gt;</comment>
+  </data>
+  <data name="WhoWeAreDescription" xml:space="preserve">
+    <value>Ours are years of very rapid evolution of technologies related to communication. Smartphones, tablets, wearables and dedicated hardware are objects we use on a daily basis, and large-scale digital information has undeniably filled our lives.&lt;/br&gt; We at Graldev are right there, in the midst of the whirling, very fast, heterogeneous flow of data and we make our contribution by developing software, services, apps and media.&lt;/br&gt; Our work team brings together the twenty-year experience of those who have experienced the countless technological changes firsthand with the enthusiasm and desire for innovation of our youngest collaborators.</value>
+    <comment>Ours are years of very rapid evolution of communication-related technologies. Smartphones, tablets, wearables and dedicated hardware are objects we use every day and large-scale digital information has undeniably filled our lives.&lt;/br&gt; We at Graldev are right there, in the midst of the swirling, very fast, heterogeneous flow of data and we give our contribution by developing software, services, apps and media.&lt;/br&gt; Our work team brings together the twenty-year experience of those who have experienced countless technological changes first-hand with the enthusiasm and desire for innovation of our youngest collaborators.</comment>
+  </data>
+  <data name="WhatDoWeDo" xml:space="preserve">
+    <value>Latest Projects</value>
+    <comment>Last Projects</comment>
+  </data>
+  <data name="VisiteTheSite" xml:space="preserve">
+    <value>Visit the site</value>
+    <comment>Visite The Site</comment>
+  </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Useful links</value>
+    <comment>Useful Links</comment>
+  </data>
+  <data name="TryIt" xml:space="preserve">
+    <value>Try it!</value>
+    <comment>Try It</comment>
+  </data>
+  <data name="TellUsAboutYourIdea" xml:space="preserve">
+    <value>Do you have a project to carry out? &lt;/br&gt; Do you want to work with us? &lt;/br&gt; Send a request!</value>
+    <comment>Do you have a project to carry out?&lt;/br&gt;Do you want to work with us?&lt;/br&gt;Send a request!</comment>
+  </data>
+  <data name="GraldevMission" xml:space="preserve">
+    <value>Graldev's Mission is to accompany the customer on the path between an idea and its realization, providing adequate support before, during and after development.</value>
+    <comment>Graldev's Mission is to accompany the customer on the path between an idea and its realization, providing adequate support before, during and after development.</comment>
+  </data>
+  <data name="ITConsulting" xml:space="preserve">
+    <value>IT Consulting</value>
+    <comment>IT Consulting</comment>
+  </data>
+  <data name="LudirexDescription" xml:space="preserve">
+    <value>Ludirex (beta) is the social platform conceived and created, in collaboration with Ludirex Srl, as a meeting point for players looking for companions or teams to play online. &lt;/br&gt; Register now!</value>
+    <comment>Ludirex (beta) is the social platform designed and created, in collaboration with Ludirex Srl, as a meeting point for players looking for teammates or teams to play online.&lt;/br&gt;Register now!</comment>
+  </data>
+  <data name="MessageSent" xml:space="preserve">
+    <value>The message has been sent, thank you!</value>
+    <comment>Your message has been sent. Thank you!</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name/Company (optional)</value>
+    <comment>Name/Company (optional)</comment>
+  </data>
+  <data name="NewProfessionalsDescriptions" xml:space="preserve">
+    <value>We are looking for a &lt;b&gt;Software Developer&lt;/b&gt; who has the following characteristics: &lt;/br&gt; &lt;/br&gt;
+Knowledge of one or more of the following &lt;b&gt;programming languages&lt;/b&gt; &lt;/br&gt;
+-&lt;b&gt;C#&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Java&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Angular&lt;/b&gt;&lt;/br&gt;
+Knowledge of &lt;b&gt;Web framework&lt;/b&gt; based on Javascript&lt;/br&gt;
+Knowledge of &lt;b&gt;Web API REST&lt;/b&gt;&lt;/br&gt;
+Services Experience with &lt;b&gt;SQL Server and MySQL&lt;/b&gt;&lt;/br&gt;
+Relational databases Knowledge and use of &lt;b&gt;GIT&lt;/b&gt;&lt;/br&gt;
+Propensity to &lt;b&gt;Team work&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;
+For your application use ours &lt;b&gt;&lt;a href="#newsletter"&gt;Contacts Form&lt;/a&gt;&lt;/b&gt;</value>
+    <comment>We are looking for a &lt;b&gt;Software Developer&lt;/b&gt; who has the following characteristics: &lt;/br&gt; &lt;/br&gt;
+Knowledge of one or more of the following &lt;b&gt;programming languages&lt;/b&gt; &lt;/br&gt;
+-&lt;b&gt;C#&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Java&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Angular&lt;/b&gt;&lt;/br&gt;
+Knowledge of Javascript-based &lt;b&gt;Web frameworks&lt;/b&gt;
+Knowledge of &lt;b&gt;Web API REST&lt;/b&gt;&lt;/br&gt; services
+Experience with &lt;b&gt;SQL SERVER and MySQL&lt;/b&gt;&lt;/br&gt; relational databases
+Knowledge and use of &lt;b&gt;GIT&lt;/b&gt;&lt;/br&gt;
+Propensity to &lt;b&gt;team work&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;
+To apply, use our &lt;b&gt;&lt;a href="#newsletter"&gt;Contact form&lt;/a&gt;&lt;/b&gt;</comment>
+  </data>
+  <data name="NewProfessionalsTitle" xml:space="preserve">
+    <value>We are looking for &lt;em&gt;New professionals&lt;/em&gt; to be included in our staff!</value>
+    <comment>We are looking for &lt;em&gt;New professional figures&lt;/em&gt; to join our staff!</comment>
+  </data>
+  <data name="NewTech" xml:space="preserve">
+    <value>New technologies</value>
+    <comment>New technologies</comment>
+  </data>
+  <data name="OurProjectDescription" xml:space="preserve">
+    <value>The best way to understand how we can help you is ... to see and experience what we have already done and to know what our customers think!</value>
+    <comment>The best way to understand how we can help you is... to see and try what we have already created and know what our customers think!</comment>
+  </data>
+  <data name="OurProjectTitle" xml:space="preserve">
+    <value>Take a look at our latest &lt;em&gt;Software Projects&lt;/em&gt;</value>
+    <comment>Check out our latest &lt;em&gt;Software Projects&lt;/em&gt;</comment>
+  </data>
+  <data name="OurServices" xml:space="preserve">
+    <value>Our services</value>
+    <comment>Our services</comment>
+  </data>
+  <data name="ParcorDescription" xml:space="preserve">
+    <value>Parcor is the web app that we are creating for the Segni Project, a project relating to the world of intercompany nurseries and of which Graldev is a technological partner.
+An application that will allow users to always be informed about news and to interact with other users, organizations and companies involved.</value>
+    <comment>Parcor is the web app we are creating for the Segni Project, a project relating to the world of Inter-company nurseries and of which Graldev is the technological partner.
+An application that will allow users to always be informed about news and to be able to interact with other users, organizations and companies involved.</comment>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone (optional)</value>
+    <comment>Phone</comment>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Read more</value>
+    <comment>ReadMore</comment>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Request</value>
+    <comment>Request</comment>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>Send Request</value>
+    <comment>Send Request</comment>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign in</value>
+    <comment>Sign In</comment>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up!</value>
+    <comment>Sign Up</comment>
+  </data>
+  <data name="SoftwareAssistance" xml:space="preserve">
+    <value>Software assistance and support</value>
+    <comment>Software Assistance</comment>
+  </data>
+  <data name="SofwareAndWebServices" xml:space="preserve">
+    <value>Software and Web services</value>
+    <comment>Sofware And Web Services</comment>
+  </data>
+  <data name="SofwareAndWebServicesDescription" xml:space="preserve">
+    <value>We design and create complete enterprise software solutions. We create automatic services and processes for all types of communication.</value>
+    <comment>We design and create complete software solutions in the Enterprise field. We create automatic services and processes for every type of communication.</comment>
+  </data>
+  <data name="SolutionsAnalysisAndDevelopment" xml:space="preserve">
+    <value>Complete solutions analysis and development</value>
+    <comment>Solutions Analysis And Development</comment>
+  </data>
+  <data name="SoonAvailable" xml:space="preserve">
+    <value>Soon available</value>
+    <comment>Soon Available</comment>
+  </data>
+  <data name="SupportAndAdvice" xml:space="preserve">
+    <value>Support and advice</value>
+    <comment>Support And Advice</comment>
+  </data>
+  <data name="SupportAndAdviceDescription" xml:space="preserve">
+    <value>We provide consultancy on software architecture to realize the idea and assistance in the use of our products with the necessary maintenance.</value>
+    <comment>We provide consultancy on the software architecture to realize the idea and assistance in the use of our products with the necessary maintenance.</comment>
+  </data>
+  <data name="GeordieDescription" xml:space="preserve">
+    <value>Geordie is our solution to help you manage your online sales. &lt;/br&gt;
+Access your stores in an organized and simple way with this highly customizable tool based on your needs</value>
+    <comment>Geordie is our solution to help you manage online sales. &lt;/br&gt;
+Access your stores in an organized and simple way with this highly customizable tool based on your needs</comment>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Find out more</value>
+    <comment>Find Out More</comment>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Mail</value>
+    <comment>Email</comment>
+  </data>
+  <data name="DiscoverGTransport" xml:space="preserve">
+    <value>Take a look</value>
+    <comment>Discover GTransport</comment>
+  </data>
+  <data name="DiscoverGeordie" xml:space="preserve">
+    <value>Discover</value>
+    <comment> Discover Geordie</comment>
+  </data>
+  <data name="DigitalSupport" xml:space="preserve">
+    <value>Digital support</value>
+    <comment>Digital Support</comment>
+  </data>
+  <data name="CustomersPartners" xml:space="preserve">
+    <value>Customers and Partners</value>
+    <comment>Customers And Partners</comment>
+  </data>
+  <data name="CustomersAndPartners" xml:space="preserve">
+    <value>&lt;em&gt;Customers and Partners&lt;/em&gt;</value>
+    <comment>Customers And Partners</comment>
+  </data>
+  <data name="CrossPlatformAppDescription" xml:space="preserve">
+    <value>We integrate the systems with the ad hoc creation of native and web based apps for smartphones, tablets, wearables and for all "smart" devices.</value>
+    <comment>We integrate the systems with the ad hoc creation of native and web based apps for smartphones, tablets, wearables and all "smart" devices.</comment>
+  </data>
+  <data name="CrossPlatformApp" xml:space="preserve">
+    <value>Cross platform app</value>
+    <comment>CrossPlatform App</comment>
+  </data>
+  <data name="ContactUs_JoinUs" xml:space="preserve">
+    <value>Contact Us / Join Us</value>
+    <comment>Contact Us / JoinUs</comment>
+  </data>
+  <data name="ARAppDevelopmentDescription" xml:space="preserve">
+    <value>Gralcall is Graldev's answer to the Augmented Reality requests of our customers and partners.
+Gralcall is software that can be adapted down to the smallest detail. &lt;/br&gt;
+Try it now and then visit the dedicated page for more information</value>
+    <comment>Gralcall is Graldev's response to the Augmented Reality requests of our customers and partners.
+Gralcall is a software that is adaptable down to the smallest details. &lt;/br&gt;</comment>
+  </data>
+  <data name="ITConsultingDescription" xml:space="preserve">
+    <value>Do you have a project you want to realize but don't know where to start?&lt;br/&gt;
+Contact us!
+&lt;br/&gt;
+We will help you find the most suitable solution to realize your idea.</value>
+  </data>
+  <data name="AI_ContentDescription" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;
+  We harness the power of Artificial Intelligence to create high-quality multimedia content tailored to your communication and digital needs.
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  Whether it's engaging videos, audio content, or dynamic integrations, we leverage advanced AI technologies to speed up production and deliver professional results quickly.
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  Contact us for a DEMO — we’ll show you how we can enhance your brand with smart, automated, and creative solutions.
+&lt;/p&gt;
+
+&lt;br /&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Some examples:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+    &lt;li&gt;
+      🧠 Creation of explainer videos for services, products, or educational projects
+    &lt;/li&gt;
+    &lt;li&gt;
+      🧠 Content creation for blog articles, images, and social media campaigns
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="AI_Content_title" xml:space="preserve">
+    <value>AI Content Creation</value>
+  </data>
+  <data name="AI_API" xml:space="preserve">
+    <value>AI Integration &amp; Development</value>
+  </data>
+  <data name="AI_API_Description" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;
+  We bring Artificial Intelligence into your software!
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+   We build applications that learn, adapt, and deliver personalized user experiences.&lt;br&gt;
+   Our custom solutions combine traditional technologies and AI to improve efficiency, simplify interactions, and enhance digital content.
+&lt;/p&gt;
+&lt;p style="margin-bottom: 20px;"&gt;
+ &lt;strong&gt;Curious about what we can build for you?&lt;/strong&gt;&lt;br&gt;
+    Get in touch and request a personalized DEMO!
+&lt;/p&gt;
+
+&lt;br /&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;A real example:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+    &lt;li&gt;
+      🍷&lt;em&gt;Vitinerario&lt;/em&gt; is your personal sommelier app powered by Artificial Intelligence.&lt;br&gt;
+      It suggests the perfect wine, answers your questions, and enriches your wine experience in real time.
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p style="margin-top: 0.5rem;"&gt;
+  &lt;a href="https://vitinerario.com/vitinerario-app" target="_blank" 
+     style="display: inline-block; background-color: #018100; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;"&gt;
+     👉 Learn more
+  &lt;/a&gt;
+&lt;/p&gt;</value>
+  </data>
+</root>

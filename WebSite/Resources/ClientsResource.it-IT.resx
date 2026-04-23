@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MobileAppClient" xml:space="preserve">
+    <value>Abbiamo bisogno di uno spazio 3D, 
+&lt;br/&gt;
+visitabile attraverso delle app mobile, 
+&lt;br/&gt;che permetta ai nostri clienti di conoscere la nostra attività</value>
+  </data>
+  <data name="TLCClient" xml:space="preserve">
+    <value> Abbiamo un'azienda di telecomunicazioni e
+ &lt;br/&gt;
+ci serve supporto per configurare automaticamente e 
+&lt;br/&gt; in tempo reale tutti i nostri sistemi.</value>
+  </data>
+  <data name="SystemIntegrationClient" xml:space="preserve">
+    <value>La Systems Integration aziendale è il motto di Graldev ed è la risposta principale che la nostra azienda è pronta a fornire ai propri clienti. &lt;/br&gt;
+Se il tuo problema è far parlare tra loro sistemi diversi o far scambiare dati tra software o hardware che normalmente non colloquiano tra loro allora ti serve il nostro aiuto. &lt;/br&gt;
+Ci occupiamo di Systems Integration da decenni e con il tempo abbiamo affrontato e vinto innumerevoli sfide in svariati campi d'azione. &lt;/br&gt;
+Tante aziende si sono rivolte e si rivolgono a noi con successo. Contattaci per organizzare un incontro e per trovare una risposta affidabile per le tue esigenze!</value>
+  </data>
+  <data name="AmazonClient" xml:space="preserve">
+    <value> Vendiamo su eBay e Amazon e abbiamo bisogno di un intero sistema che &lt;br/&gt;
+   allinei i nostri software aziendali con i dati di vendita e crei della reportistica </value>
+  </data>
+  <data name="GestClient" xml:space="preserve">
+    <value> Siamo un'azienda automobilistica e abbiamo necessità di un software &lt;br/&gt;
+          che permetta alla nostra rete di assistenza di fare magazzino e di gestire tutta la nostra attrezzatura</value>
+  </data>
+  <data name="ARClient" xml:space="preserve">
+    <value>Siamo un'associazione culturale e &lt;br/&gt;
+         ci servirebbe un'applicazione che ci permetta di raccontare i paesi della nostra terra in modo nuovo, &lt;br/&gt;
+         con l'ausilio della realtà aumentata </value>
+  </data>
+  <data name="MarketingClient" xml:space="preserve">
+    <value>  Siamo dei produttori/rivenditori di vino e avremmo bisogno di un'efficace strategia di Marketing sui social  &lt;br /&gt;
+  per attrarre il più alto numero di potenziali clienti</value>
+  </data>
+  <data name="SocialNClient" xml:space="preserve">
+    <value> Siamo un'azienda in espansione e vorremmo farci conoscere anche attraverso i canali social.  &lt;br /&gt;
+ Ci servirebbe quindi qualcuno che gestisca i nostri profili Facebook, Instagram, LinkedIn, X e TikTok . &lt;br /&gt;</value>
+  </data>
+  <data name="KnowMore" xml:space="preserve">
+    <value>&lt;strong&gt; Vuoi saperne di più? &lt;/strong&gt; 
+&lt;br /&gt; 
+Non esitare a &lt;a id="contactLink" href="#" class="green-link"&gt; contattarci&lt;/a&gt;</value>
+  </data>
+  <data name="OKClient" xml:space="preserve">
+    <value> Risolto!</value>
+  </data>
+  <data name="TlcclientTitle" xml:space="preserve">
+    <value>Supporto e Consulenza &lt;br /&gt; IT - TLC</value>
+  </data>
+  <data name="GestClientTitle" xml:space="preserve">
+    <value>Software Gestionali</value>
+  </data>
+  <data name="MarketingClientTitle" xml:space="preserve">
+    <value>Campagne Marketing</value>
+  </data>
+  <data name="MissionClient" xml:space="preserve">
+    <value>                La nostra mission è far comunicare tra loro sistemi informatici, già esistenti o da realizzare, che normalmente non si parlano. &lt;br /&gt;
+                Per spiegare meglio questo concetto non c'è modo migliore che dare qualche esempio di quanto i nostri clienti ci hanno chiesto e noi abbiamo realizzato:</value>
+  </data>
+  <data name="canHelpClient" xml:space="preserve">
+    <value>Vuoi sapere se possiamo aiutarti?</value>
+  </data>
+  <data name="TitleClientsection" xml:space="preserve">
+    <value>Perchè contattarci </value>
+  </data>
+  <data name="SysModal" xml:space="preserve">
+    <value> &lt;p style="margin-bottom: 20px;"&gt;La &lt;strong&gt;Systems Integration&lt;/strong&gt; aziendale è il motto di Graldev ed è la risposta principale che la nostra azienda è pronta a fornire ai propri clienti. &lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Se il tuo problema è far parlare tra loro sistemi diversi o far scambiare dati tra software o hardware che normalmente non colloquiano tra loro allora ti serve il nostro aiuto.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Ci occupiamo di Systems Integration da decenni e con il tempo abbiamo affrontato e vinto innumerevoli sfide in svariati campi d'azione. &lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Tante aziende si sono rivolte e si rivolgono a noi con successo. Contattaci per organizzare un incontro e per trovare una risposta affidabile per le tue esigenze!&lt;/p&gt;
+ &lt;br /&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Alcuni esempi:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-puzzle-piece" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di software per la configurazione e la gestione di linee telefoniche fisse e/o mobili per una grande azienda di Telecomunicazioni &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-puzzle-piece" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di strumenti informatici per raccogliere, raggruppare e presentare i dati forniti in tempo reale da macchine stampatrici industriali &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-puzzle-piece" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di canali di Integrazione, all'interno di Portali Web di Giochi online, con sistemi esterni attraverso l'utilizzo o la realizzazione di Web Services, API REST e altri strumenti di comunicazione custom &lt;br /&gt; &lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/p&gt;</value>
+  </data>
+  <data name="AppsModal" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;Il nostro target principale sono le realtà aziendali medio-grandi. In questo contesto abbiamo accumulato tanta esperienza nella realizzazione di App Mobile e Web Applications per gli scopi più disparati.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Realizziamo App per &lt;strong&gt;iOS/Android&lt;/strong&gt; sia in linguaggi nativi (Swift/Java) sia utilizzando framework preesistenti. &lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Negli ultimi anni ci siamo specializzati nell'utilizzo di diversi strumenti per la realizzazione di Videogame e Gamifications in 3D (Unreal Engine / Roblox), 2D (RPG Maker) e altri strumenti come le Power Apps Microsoft.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Siamo coinvolti anche nella diffusione scolastica della cultura della realizzazione del videogioco in modo da dare gli strumenti e le conoscenze ai ragazzi per diventare parte attiva in questo mondo!&lt;/p&gt;
+ &lt;br /&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Alcuni esempi:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-gamepad"style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di una web application per la gestione magazzino di tutte le officine nazionali di una casa automobilistica internazionale &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-gamepad"style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di app native iOS/Android per il gioco online &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-gamepad"style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di una App iOS per la registrazione di clienti con FES e FEA integrate per un cliente internazionale&lt;br /&gt; &lt;li/&gt;
+  &lt;/ul&gt;
+ &lt;/p&gt;</value>
+  </data>
+  <data name="CartModal" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;Alcune aziende e fabbriche che vendono grossi volumi di merce online si sono rivolte a noi per velocizzare e migliorare l'esperienza di vendita attraverso i canali più utilizzati come &lt;strong&gt;Amazon, eBay o Shopify&lt;/strong&gt;.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Abbiamo realizzato uno strumento,&lt;strong&gt; Geordie&lt;/strong&gt;, che permette di integrare tutte le fasi di produzione, creazione delle inserzioni in maniera massiva, gestione dei prodotti nelle vetrine, comunicazione con i clienti e vendita sul Web partendo dalla catena di montaggio fino ad arrivare al prodotto finito e imballato con la creazione delle etichette di destinazione da apporre sui pacchi in partenza.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Inoltre abbiamo al nostro interno il personale già preparato per poter gestire le necessità di interazione con i clienti finali.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Abbiamo quindi realizzato uno strumento multifunzione, altamente customizzabile e integrato, che ha ridotto tempi e costi dei nostri clienti.&lt;/p&gt;
+ &lt;br /&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Alcuni esempi:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-star" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione Geordie per l'interfacciamento tra macchine industriali per la produzione di prodotti per gli interni auto &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-star" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione Geordie per la vendita, la reportistica e la comunicazione 24/365 con le Web API di Amazon e eBay per un cliente che produce prodotti per le auto &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-star" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di un'interfaccia tra il gestionale di un nostro cliente e il proprio negozio su Shopify &lt;br /&gt; &lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/p&gt;</value>
+  </data>
+  <data name="SupportModal" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;Alcuni di noi vivono l'informatica dagli anni 80 mentre altri sono nati e cresciuti già avvolti dalla cultura dell'informatica a 360°.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Siamo pronti ad aiutarti sotto ogni aspetto per creare un software multi-utente o una soluzione interamente sul Cloud, o semplicemente per spiegarti quale possa essere la migliore infrastruttura aziendale per il tuo business.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Incontriamoci e parliamone!&lt;/p&gt;</value>
+  </data>
+  <data name="GestModal" xml:space="preserve">
+    <value>&lt;br /&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;I software gestionali sono forse lo strumento più richiesto e più necessario per le aziende. &lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Noi non proponiamo customizzazioni di strumenti già pronti ma realizziamo proprio lo strumento di cui hai bisogno, con tutte le personalizzazioni che desideri.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Prenota un incontro con noi e insieme pensiamo e progettiamo lo strumento più adatto alle esigenze della tua realtà aziendale.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Poi noi lo realizzeremo da zero, senza compromessi e senza pacchetti pre-costruiti. Solo quello che ti serve e nella forma a te più utile, online o su intranet.&lt;/p&gt;
+ &lt;br /&gt;</value>
+  </data>
+  <data name="ARModal" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;Abbiamo realizzato un nostro strumento di Realtà Aumentata e possiamo inserirlo facilmente nella tua infrastruttura.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Possiamo arricchire i tuoi strumenti pubblici come Web Sites o Web Applications con delle realizzazioni 3D o addirittura realizzare il tuo intero mondo Web in 3D.&lt;/p&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;Contattaci e incontriamoci per una DEMO dei nostri strumenti e delle nostre realizzazioni!&lt;/p&gt;
+ &lt;br /&gt;
+ &lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Alcuni esempi:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-cubes" style="color: #37d28a;"&gt;&lt;/i&gt; Sviluppo WebApp per un'associazione culturale che, scansionando Qr code , visualizzi video educativi in AR &lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-cubes" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione modelli 3D per Siti web e/o applicazioni mobile&lt;br /&gt; &lt;/li&gt;
+   &lt;li&gt;&lt;i class="fa-solid fa-cubes" style="color: #37d28a;"&gt;&lt;/i&gt; Realizzazione di Virtual Tour 360° per WebApp e/o Oculus &lt;br /&gt; &lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/p&gt;</value>
+  </data>
+  <data name="CIC_About" xml:space="preserve">
+    <value>Cos'è ?</value>
+  </data>
+  <data name="CIC_Why" xml:space="preserve">
+    <value>Perchè usarlo?</value>
+  </data>
+  <data name="Functionality" xml:space="preserve">
+    <value>Funzionalità</value>
+  </data>
+</root>

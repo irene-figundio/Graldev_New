@@ -1,0 +1,546 @@
+﻿@using WebSite.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@{
+    string? urlPolicy = Url.ActionLink("Privacy", "Home");
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graldev S.a.s</title>
+    <!-- Favicon -->
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link href="~/css/lightbox.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    @RenderSection("styleImport", required: false)
+</head>
+<body>
+
+    <header class="nav-down" id="header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style=" margin-right: 5px;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul id="desktopNav" class="navbar-nav flex-grow-1" style="justify-content: space-evenly;flex-direction: row;">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#Projects">@Localizer[MainResource.Projects] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.graldevstudios.com/" target="_blank"> GraldevStudios </a>
+                        </li>
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/asset/img/GraldevLogo.png" style="width: 45px;height: 50px;margin-left: 39px;margin-bottom: -7px;margin-top: -7px;margin-right: 1px;/padding-inline: 2px;" />
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#about">@Localizer[MainResource.AboutUs] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#testimonial">@Localizer[MainResource.Clients] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#ContactDesktop">@Localizer[MainResource.ContactUs] </a>
+                        </li>
+                    </ul>
+                    <ul id="mobileNav" class="navbar-nav flex-grow-1" style="display:none;justify-content: space-evenly;flex-direction: column;">
+
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/asset/img/GraldevLogo.png" style="width: 45px;height: 50px;margin-left: 15px;margin-bottom: -20px;/* margin: -5px; */padding-inline: 2px;" />
+                            </a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#Projects">@Localizer[MainResource.Projects] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://www.graldevstudios.com/" target="_blank"> GraldevStudios </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#about">@Localizer[MainResource.AboutUs] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#testimonial">@Localizer[MainResource.Clients] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Home/Index/#ContactMobile">@Localizer[MainResource.ContactUs] </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <div class="cookies-banner-container" role="region" aria-label="Cookies banner">
+        <div id="cookieBannerDesktop" class="cookies-banner" role="alert">
+            <div class="cookies-banner__icon" role="img" aria-label="Cookie icon" style="padding: 10px; align-items:center;margin-left: 10px;">
+                <img src="https://img.icons8.com/offices/100/000000/cookies.png" alt="" aria-hidden="true" style="width:45px;" />
+            </div>
+            <div class="cookies-banner__info-text" style="padding: 10px;margin-right: 10px;">
+
+                <div style="padding: 10px;" font face="Arial, Helvetica, sans-serif">
+                    @Localizer[@CookiesResource.CookieBannerInfo] <a id="view-policy" href="/Home/Privacy"> @Localizer[@CookiesResource.ClickHere]</a>
+                    <br />
+                    @Localizer[@CookiesResource.CookieBannerWarning]
+
+                </div>
+            </div>
+            <div class="cookies-banner__accept-btn" style="padding: 10px;">
+                <button role="button" aria-label="Accept cookies">@Localizer[@CookiesResource.Accept]</button>
+            </div>
+        </div>
+    </div>
+    <footer id="footerSection">
+        <div id="mobilefooter" style="display: none;flex-wrap: nowrap;justify-content: center;flex-direction: row;align-content: space-between;">
+            <div class="container">
+                <div class="row justify-content-center" id="footerCont">
+                    <div class="col-md-7" style="flex: 0 0 auto;">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a href="#" target="_blank">
+                                    <img class="logo-footer" src="~/asset/img/GraldevLogo.png" style=" width: 50px; height: 60px;margin-top:10px;" />
+                                </a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            @*<li >
+                            <a href="https://www.instagram.com/graldevstudios/" target="_blank" style=" text-decoration:none !important;">@MainResource.ContactUs</a>
+                            <br />
+                            </li>*@
+
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100093062469736" target="_blank">
+                                    <div class="socialsy bgli">
+                                        <i class="fa fa-facebook" style="margin-top: 3.5px;margin-left: 7px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/graldevstudios/" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-instagram" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://wa.me/393783050350?" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-whatsapp" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-linkedin-in" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+                                <br />
+                            </li>
+                            <li>
+                                <div class="socialsy bgli">
+
+                                    <i class="fa-brands fa-tiktok" style="margin-top: 3.5px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                </div>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="row col-md-7" style="flex: 0 0 auto;">
+                    <ul style="list-style: none;">
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a href="/Home/Privacy" target="_blank" style="margin-left: 12px; text-decoration:none !important;">Privacy & Cookies</a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT">
+                                <h6>IT</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN">
+                                <h6>EN</h6>
+                            </a>
+
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="desktopfooter" style="display: flex;flex-wrap: nowrap;justify-content: center;flex-direction: row;align-content: space-between;">
+            <div class="container">
+                <div class="row justify-content-center" id="footerContDesktop">
+                    <div class="col-md-7" style="flex: 0 0 auto;">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a href="https://www.instagram.com/graldevstudios/" target="_blank">
+                                    <img class="logo-footer" src="~/asset/img/GraldevLogo.png" style=" width: 50px; height: 60px;margin-top:10px;" />
+                                </a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            @*<li >
+                            <a href="https://www.instagram.com/graldevstudios/" target="_blank" style=" text-decoration:none !important;">@MainResource.ContactUs</a>
+                            <br />
+                            </li>*@
+
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=100093062469736" target="_blank">
+                                    <div class="socialsy bgli">
+                                        <i class="fa fa-facebook" style="margin-top: 3.5px;margin-left: 7px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/graldevstudios/" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-instagram" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://wa.me/393783050350?" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-whatsapp" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-linkedin-in" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+                                <br />
+                            </li>
+                            <li>
+                                <div class="socialsy bgli">
+
+                                    <i class="fa-brands fa-tiktok" style="margin-top: 3.5px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                </div>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-md-7" style="flex: 0 0 auto;padding-inline: 124px;">
+                        <ul style="list-style: none;">
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <a href="/Home/Privacy" target="_blank" style="margin-left: 12px; text-decoration:none !important;">Privacy & Cookies</a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT">
+                                    <h6>IT</h6>
+                                </a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN">
+                                    <h6>EN</h6>
+                                </a>
+
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </footer>
+
+
+
+    @RenderSection("scripts", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Main Script -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/2b70580465.js" crossorigin="anonymous" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" asp-append-version="true"></script>
+    <script src="~/js/lightbox.js" asp-append-version="true"></script>
+    <script type="text/javascript">      
+        function handleCookiesBanner() {
+            const cookiesBanner = $(".cookies-banner-container");
+            const acceptedCookies = getCookie("accepted_cookies");
+            const policyUrl = "@urlPolicy";
+            const policyText = "Term and Privacy Policy";
+
+            if (!acceptedCookies) {
+                const acceptBtn = cookiesBanner.find(".cookies-banner__accept-btn button");
+                acceptBtn.on("click", function () {
+                    setCookie("accepted_cookies", "true", 365);
+                    cookiesBanner
+                        .css("transform", "translateY(100%)")
+                        .one("transitionend", function () {
+                            $(this).remove();
+                        });
+                });
+                cookiesBanner.show();
+
+                const cookiesPolicyLink = $(".cookies-banner__terms-and-policy");
+                cookiesPolicyLink.attr("href", policyUrl);
+                cookiesPolicyLink.text(policyText);
+            } else {
+                cookiesBanner.remove();
+            }
+
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                    expires = "; expires=" + date.toUTCString();
+                }
+
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            function getCookie(name) {
+                const cookieValue = document.cookie.match(
+                    "(^|;)\\s*" + name + "\\s*=\\s*([^;]+)"
+                );
+                return cookieValue ? cookieValue.pop() : null;
+            }
+        }
+        $(handleCookiesBanner);
+
+        function fade($ele) {
+            $ele.fadeIn(1000).delay(3000).fadeOut(1000, function () {
+                var $next = $(this).next('.quote');
+                fade($next.length > 0 ? $next : $(this).parent().children().first());
+            });
+        }
+        fade($('.quoteLoop > .quote').first());
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices':true,
+            'fitImagesInViewport':true
+        });
+        @RenderSection("scriptsInit", required: false)
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+﻿@using WebSite.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<div class="home" style="display: flex; justify-content: center;">
+    <video preload="metadata" poster="~/asset/img/backgrounddesktop.png" id="videoDesktop" muted loop autoplay playsinline>
+            <source src="~/asset/video/videobackground.mp4" type="video/mp4" />
+        </video>
+        <video preload="metadata"poster="~/asset/img/backgrounddesktop.png" id="videoMobile" muted loop autoplay playsinline style="display:none;">
+            <source src="~/asset/video/videobackground.mp4" type="video/mp4" />
+        </video>
+        @*<div class="reveal heading" id="titleReveal">
+        <h1 >Graldev</h1>
+        </div>
+        <br />
+        <div class="reveal heading" id="SubTitleReveal">
+        <h1 >@Localizer[MainResource.SubTitle]</h1>
+        </div>*@
+
+
+        <div class="title" style=" text-align: center;">
+            <p class="heading">
+                <h1 class=" reveal">Graldev </h1>
+                <br />
+                 <br />
+             </p>
+            <p class="heading">
+                <h2 class="reveal">@Localizer[MainResource.SubTitle]</h2>
+                <br />
+            </p>
+        <a href="#Projects">
+            <div class="scrolling2 hidden-sm-up">
+                <div class="mouse2">
+
+                    <div class="wheel"></div>
+                </div>
+                <div>
+                    <span class="unu center"></span>
+                    <span class="doi center"></span>
+                </div>
+            </div>
+        </a>
+        </div>
+  
+</div>
+    
+
+
+<!-- Portfolio Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<section id="Projects" style="background: #f9f6f6fa;">
+    <div class="container" id="wrapper">
+        <h1>@Localizer[MainResource.Projects]</h1>
+        <div class="block"></div>
+        <div class="row ">
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work One" />
+                </a>                   
+            </div>
+            <div class="three columns "> 
+                 <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Two" />
+                 </a>                
+            </div>
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Three" />
+                </a>                
+            </div>
+            <div class="three columns "> 
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Four" />
+                </a>               
+            </div>
+        </div>
+        <div class="row " style="margin-top: 30px;">
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work One" />
+                </a>
+            </div>
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Two" />
+                </a>
+            </div>
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Three" />
+                </a>
+            </div>
+            <div class="three columns ">
+                <a asp-controller="Project" asp-action="AR">
+                    <img src="http://placehold.it/220x220" class="image" alt="Work Four" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<section id="about" style="background: #f9f6f6fa;">
+    <div class="container">
+        <div class="row">
+            <h1>About</h1>
+            <div class="block"></div>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <h3><span class="typcn typcn-device-desktop icon"></span>Our Process</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div class="six columns">
+                <h3><span class="typcn typcn-pen icon"></span>Our Approach</h3>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+            <div class="row">
+                <div class="six columns">
+                    <h3><span class="typcn typcn-cog-outline icon"></span>Our Goal</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+                <div class="six columns">
+                    <h3><span class="typcn typcn-lightbulb icon"></span>Our Mission</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Testimonials Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<section id="testimonial" style="background: #f9f6f6fa;">
+    <div class="container">
+        <div class="quoteLoop">
+            <blockquote class="quote">
+                <img src="http://placehold.it/100x100" width="100" height="100" alt="" />
+                <h5>
+                    &nbsp;<br>
+                    &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&rdquo;<br>
+                    <small>Steve Bruce, Sed ut perspiciatis unde omnis</small>
+                </h5>
+            </blockquote>
+            <blockquote class="quote">
+                <img src="http://placehold.it/100x100" width="100" height="100" alt="" />
+                <h5>
+                    &nbsp;<br>
+                    &ldquo;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.&rdquo;<br>
+                    <small>Tom Jones, Sed ut perspiciatis unde omnis</small>
+                </h5>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<section id="contact" style="background: #f9f6f6fa;">
+    <div class="container">
+        <h1>Contact</h1>
+        <div class="block"></div>
+        <form>
+            <div class="row">
+                <div class="six columns">
+                    <label for="exampleRecipientInput">Name</label>
+                    <input class="u-full-width" type="text">
+                </div>
+                <div class="six columns">
+                    <label for="exampleEmailInput">Email</label>
+                    <input class="u-full-width" type="email">
+                </div>
+            </div>
+            <div class="row">
+                <label for="exampleMessage">Message</label>
+                <textarea class="u-full-width"></textarea>
+                <input class="button-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</section>
+

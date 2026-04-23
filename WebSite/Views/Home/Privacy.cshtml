@@ -1,0 +1,47 @@
+﻿@using WebSite.Resources;
+@{
+    ViewData["Title"] = "Privacy Policy";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy</title>
+    <!-- Favicon -->
+    <link rel="icon" href="~/logo.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <!-- <link rel="stylesheet" href="~/StudiosWeb.styles.css" asp-append-version="true" /> -->
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14P8MT13VP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-14P8MT13VP');
+    </script>
+</head>
+
+<body>
+    <div class="main-content">
+        <h2>@CookiesResource.PrivacySubTitle</h2><br />
+        <p>
+            <b>@CookiesResource.PrivacyPolicyTitle</b> <br /><br />
+            @Html.Raw(@CookiesResource.PolicyIntro)
+            @Html.Raw(@CookiesResource.PolicyData)
+            @Html.Raw(@CookiesResource.PolicyCookies)
+        </p>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

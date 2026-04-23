@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contattaci</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>Chi siamo</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Progetti</value>
+  </data>
+  <data name="Clients" xml:space="preserve">
+    <value>I nostri Clienti</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>La nostra Posizione</value>
+  </data>
+  <data name="SubTitle" xml:space="preserve">
+    <value>Enterprise Systems Integration</value>
+  </data>
+  <data name="WorkTeamDescription" xml:space="preserve">
+    <value>Il nostro team di lavoro mette insieme l'esperienza ventennale di chi ha vissuto sulla propria pelle gli innumerevoli cambiamenti tecnologici con l'entusiasmo e la voglia di innovazione dei nostri più giovani collaboratori.</value>
+  </data>
+  <data name="WhoWeAreTitle" xml:space="preserve">
+    <value>&lt;em&gt;Chi siamo&lt;/em&gt;</value>
+  </data>
+  <data name="WhoWeAreDescription" xml:space="preserve">
+    <value>I nostri sono anni di velocissima evoluzione delle tecnologie legate alla comunicazione. Smartphone, tablet, wearable e hardware dedicati sono oggetti che usiamo quotidianamente e l'informazione digitale su vasta scala ha innegabilmente riempito le nostre vite.&lt;/br&gt; Noi di Graldev siamo proprio lì, in mezzo al vorticoso, velocissimo, eterogeneo flusso di dati e diamo il nostro contributo sviluppando software, servizi, app e media.&lt;/br&gt; Il nostro team di lavoro mette insieme l'esperienza ventennale di chi ha vissuto sulla propria pelle gli innumerevoli cambiamenti tecnologici con l'entusiasmo e la voglia di innovazione dei nostri più giovani collaboratori.</value>
+  </data>
+  <data name="WhatDoWeDo" xml:space="preserve">
+    <value>Ultimi Progetti</value>
+  </data>
+  <data name="VisiteTheSite" xml:space="preserve">
+    <value>Visita il sito</value>
+  </data>
+  <data name="UsefulLinks" xml:space="preserve">
+    <value>Link utili</value>
+  </data>
+  <data name="TryIt" xml:space="preserve">
+    <value>Provalo!</value>
+  </data>
+  <data name="TellUsAboutYourIdea" xml:space="preserve">
+    <value>Hai un progetto da realizzare?&lt;/br&gt;Vuoi lavorare con noi?&lt;/br&gt;Invia una richiesta!</value>
+  </data>
+  <data name="GraldevMission" xml:space="preserve">
+    <value>La Mission di Graldev è accompagnare il cliente nel percorso che c'è tra un'idea e la sua realizzazione, fornendo il supporto adeguato prima, durante e dopo lo sviluppo.</value>
+  </data>
+  <data name="ITConsulting" xml:space="preserve">
+    <value>Consulenze informatiche</value>
+  </data>
+  <data name="LudirexDescription" xml:space="preserve">
+    <value>Ludirex (beta) è la piattaforma social pensata e realizzata, in collaborazione con Ludirex Srl, come punto di incontro per i player che cercano compagni o team per giocare on-line.&lt;/br&gt;Registrati subito!</value>
+  </data>
+  <data name="MessageSent" xml:space="preserve">
+    <value>Il tuo messaggio è stato inviato, grazie!</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome/Azienda (opzionale)</value>
+  </data>
+  <data name="NewProfessionalsDescriptions" xml:space="preserve">
+    <value>Siamo in cerca di un &lt;b&gt;Software Developer&lt;/b&gt; che abbia le seguenti caratteristiche: &lt;/br&gt; &lt;/br&gt;
+Conoscenza di uno o più dei seguenti &lt;b&gt;linguaggi di programmazione&lt;/b&gt; &lt;/br&gt;
+-&lt;b&gt;C#&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Java&lt;/b&gt;&lt;/br&gt;
+-&lt;b&gt;Angular&lt;/b&gt;&lt;/br&gt;
+Conoscenza di &lt;b&gt;framework Web&lt;/b&gt; basati su Javascript&lt;/br&gt;
+Conoscenza di servizi &lt;b&gt;Web API REST&lt;/b&gt;&lt;/br&gt;
+Esperienza con i database relazionali &lt;b&gt;SQL SERVER e MySQL&lt;/b&gt;&lt;/br&gt;
+Conoscenza e utilizzo di &lt;b&gt;GIT&lt;/b&gt;&lt;/br&gt;
+Propensione al &lt;b&gt;lavoro in Team&lt;/b&gt;&lt;/br&gt;&lt;/br&gt;
+Per la tua candidatura utilizza il nostro &lt;b&gt;&lt;a href="#newsletter"&gt;Form per i contatti&lt;/a&gt;&lt;/b&gt;</value>
+  </data>
+  <data name="NewProfessionalsTitle" xml:space="preserve">
+    <value>Stiamo cercando &lt;em&gt;Nuove figure professionali&lt;/em&gt; da inserire nel nostro organico!</value>
+  </data>
+  <data name="NewTech" xml:space="preserve">
+    <value>Nuove tecnologie</value>
+  </data>
+  <data name="OurProjectDescription" xml:space="preserve">
+    <value>Il modo migliore per capire come possiamo aiutarti è... vedere e provare quello che abbiamo già realizzato e sapere cosa ne pensano i nostri clienti!</value>
+  </data>
+  <data name="OurProjectTitle" xml:space="preserve">
+    <value>Dai un'occhiata ai nostri ultimi &lt;em&gt;Progetti Software&lt;/em&gt;</value>
+  </data>
+  <data name="OurServices" xml:space="preserve">
+    <value>I nostri servizi</value>
+  </data>
+  <data name="ParcorDescription" xml:space="preserve">
+    <value>Parcor è la web app che stiamo realizzando per il Progetto Segni, progetto relativo al mondo dei Nidi Interaziendali e di cui Graldev è partner tecnologico.
+Un'applicazione che permetterà agli utenti di essere sempre informati sulle novità e di poter interagire con gli altri utenti, Enti e società coinvolte.</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefono</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Leggi di più</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Richiesta</value>
+  </data>
+  <data name="SendRequest" xml:space="preserve">
+    <value>Invia Richiesta</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Accedi</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Iscriviti!</value>
+  </data>
+  <data name="SoftwareAssistance" xml:space="preserve">
+    <value>Assistenza e supporto software</value>
+  </data>
+  <data name="SofwareAndWebServices" xml:space="preserve">
+    <value>Software e servizi web</value>
+  </data>
+  <data name="SofwareAndWebServicesDescription" xml:space="preserve">
+    <value>Progettiamo e creiamo soluzioni software complete in ambito Enterprise. Realizziamo servizi e processi automatici per ogni tipo di comunicazione.</value>
+  </data>
+  <data name="SolutionsAnalysisAndDevelopment" xml:space="preserve">
+    <value>Analisi e sviluppo Soluzioni complete</value>
+  </data>
+  <data name="SoonAvailable" xml:space="preserve">
+    <value>Presto disponibile</value>
+  </data>
+  <data name="SupportAndAdvice" xml:space="preserve">
+    <value>Supporto e consulenze</value>
+  </data>
+  <data name="SupportAndAdviceDescription" xml:space="preserve">
+    <value>Forniamo consulenze sull'architettura del software per realizzare l'idea e assistenza nell'utilizzo dei nostri prodotti con la necessaria manutenzione.</value>
+  </data>
+  <data name="GeordieDescription" xml:space="preserve">
+    <value>Geordie è la nostra soluzione per aiutarti nella gestione delle vendite online. &lt;/br&gt;
+Accedi ai tuoi store in maniera organizzata e semplice con questo strumento altamente personalizzabile sulla base delle tue esigenze</value>
+  </data>
+  <data name="FindOutMore" xml:space="preserve">
+    <value>Scopri di più</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="DiscoverGTransport" xml:space="preserve">
+    <value>Scopri</value>
+  </data>
+  <data name="DiscoverGeordie" xml:space="preserve">
+    <value>Scopri Geordie</value>
+  </data>
+  <data name="DigitalSupport" xml:space="preserve">
+    <value>Supporto digitale</value>
+  </data>
+  <data name="CustomersPartners" xml:space="preserve">
+    <value>Clienti e Partners</value>
+  </data>
+  <data name="CustomersAndPartners" xml:space="preserve">
+    <value>Clienti e Partners</value>
+  </data>
+  <data name="CrossPlatformAppDescription" xml:space="preserve">
+    <value>Integriamo i sistemi con la realizzazione ad hoc di app native e web based per smartphone, tablet, wearable e per tutti i device "smart".</value>
+  </data>
+  <data name="CrossPlatformApp" xml:space="preserve">
+    <value>App multipiattaforma</value>
+  </data>
+  <data name="ContactUs_JoinUs" xml:space="preserve">
+    <value>Contattaci / Lavora con noi</value>
+  </data>
+  <data name="ARAppDevelopmentDescription" xml:space="preserve">
+    <value>Gralcall è la risposta di Graldev alle richieste di Realtà Aumentata dei nostri clienti e partner.
+Gralcall è un software adattabile fin nei minimi dettagli. &lt;/br&gt;</value>
+  </data>
+  <data name="ITConsultingDescription" xml:space="preserve">
+    <value>Hai  un progetto che desideri realizzare ma non sai da dove iniziare?&lt;br/&gt;
+Contattaci! 
+&lt;br/&gt;
+Ti aiuteremo a trovare la soluzione più adatta per realizzare la tua idea.</value>
+  </data>
+  <data name="AI_ContentDescription" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;
+ Utilizziamo la potenza dell’Intelligenza Artificiale per creare contenuti multimediali di alta qualità, personalizzati sulle tue esigenze comunicative e digitali.
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  Che si tratti di video coinvolgenti, contenuti audio o integrazioni dinamiche, sfruttiamo tecnologie AI avanzate per velocizzare la produzione e ottenere risultati professionali in tempi rapidi.
+&lt;/p&gt;
+&lt;p style="margin-bottom: 20px;"&gt;
+  Contattaci per una DEMO: ti mostreremo in che modo possiamo valorizzare il tuo brand con soluzioni intelligenti, automatizzate e creative.
+&lt;/p&gt;
+
+&lt;br /&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Alcuni esempi:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+    &lt;li&gt;
+      🧠 Creazione di video esplicativi per servizi, prodotti o progetti formativi
+    &lt;/li&gt;
+    &lt;li&gt;
+      🧠 Creazione di contenuti per articoli di blog, immagini e campagne sui social media
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="AI_Content_title" xml:space="preserve">
+    <value>Creazione Contenuti IA</value>
+  </data>
+  <data name="AI_API" xml:space="preserve">
+    <value>Sviluppo ed integrazione IA</value>
+  </data>
+  <data name="AI_API_Description" xml:space="preserve">
+    <value>&lt;p style="margin-bottom: 20px;"&gt;
+  Portiamo l’Intelligenza Artificiale nel tuo software!
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  Realizziamo applicazioni capaci di apprendere, adattarsi e offrire esperienze utente personalizzate.&lt;br&gt;
+  Le nostre soluzioni su misura uniscono tecnologie tradizionali e IA per migliorare l’efficienza, semplificare l’interazione e valorizzare i contenuti digitali.
+&lt;/p&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Vuoi scoprire cosa possiamo realizzare per te?&lt;/strong&gt;&lt;br&gt;
+  Contattaci e richiedi una DEMO personalizzata!
+&lt;/p&gt;
+
+&lt;br /&gt;
+
+&lt;p style="margin-bottom: 20px;"&gt;
+  &lt;strong&gt;Un esempio concreto:&lt;/strong&gt;
+  &lt;ul class="star-list"&gt;
+    &lt;li&gt;
+      🍷&lt;em&gt;Vitinerario&lt;/em&gt; è la tua app sommelier personale basata su Intelligenza Artificiale.&lt;br&gt;
+      Ti consiglia il vino perfetto, risponde alle tue domande e arricchisce la tua esperienza enologica in tempo reale.
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p style="margin-top: 0.5rem;"&gt;
+  &lt;a href="https://vitinerario.com/vitinerario-app" target="_blank" 
+     style="display: inline-block; background-color: #018100; color: #fff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold;"&gt;
+     👉 Scopri di più
+  &lt;/a&gt;
+&lt;/p&gt;
+</value>
+  </data>
+</root>

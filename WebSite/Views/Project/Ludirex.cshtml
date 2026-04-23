@@ -1,0 +1,98 @@
+﻿@using WebSite.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+@using WebSite.Model
+
+@inject IOptions<AppInfo> AppInfo
+@inject IOptions<ContactsInfo> ContactsInfo
+@inject IOptions<MailSettings> MailSettings
+
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "Ludirex";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+<div class="landing-page" style="display:none;background: #f9f6f6fa;" id="LudiLandingMobile">
+    <div class="content">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="info">
+                <h1>Ludirex (Beta)</h1>
+                <p>@Localizer[ProjectsResource.LudirexSubtitle]</p>
+                <button type="button" href="https://www.ludirex.com/">@Localizer[MainResource.SignUp]</button>
+            </div>
+            <div class="image">
+                <img src="~/asset/img/copertina_ludirex1.png" />
+            </div>
+        </div>
+    </div>
+</div>
+<div id="LudiLandDesk">
+    <div class="background ludirex-back parallax" id="LudiLandingDesktop" style="display: flex;justify-content: center; align-content: center;">
+        <div class="image" id="LudiLogoDesktop" style="margin-left: 45%;margin-top: 20%;background: transparent;">
+            <img src="~/asset/img/ludirexbeta_logo.png" style="height: 100px;" />
+        </div>
+    </div>
+    <div class="background ludirex-back  parallax" id="LudiLandingDesktop">
+        <br />
+    </div>
+</div>
+
+<section style="background: #f9f6f6fa;">
+    <div class="container">
+        <br />
+        <div class="row">
+            <h1><strong>Ludirex</strong> (Beta)<br /></h1>
+            <div class="block"></div>
+            <p>
+                @Html.Raw(@ProjectsResource.LudirexDescription)
+            </p>
+        </div>
+        <br />
+        <div class=" row justify-content-center">
+            <div id="ProvaOraLud">
+                <button class="projectButton" type="button" href="https://www.ludirex.com/">@Localizer[MainResource.SignUp]</button>
+            </div>
+            <br />
+            <div class="block"></div>
+            <br />
+            <p>
+               @Localizer[ProjectsResource.LudiSocial] <br />
+                <br />
+                <ul style="list-style-type:none;">
+                    <li>
+                        <a href="https://www.instagram.com/ludirex/" target="_blank"><i class="fab fa-instagram fa-3x" style="color: hotpink;"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ludirex-109947278139679/" target="_blank"><i class="fab fa-facebook fa-3x" style="color: #1877F2;"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Ludirex1" target="_blank"><i class="fab fa-twitter fa-3x" style="color: rgb(29, 155, 240);"></i></a>
+                    </li>
+                </ul>
+            </p>
+            <br />
+        </div>
+        <br />
+    </div>
+    <br />
+</section>
+<div class="background ludirex-back parallax" id="LudiLandingDesktop">
+    <br />
+</div>
+<section id="gallery" style="background: #f9f6f6fa;">
+    <div class="container" id="wrapper">
+        <br />
+        <h1>Gallery</h1>
+        <div class="block"></div>
+        <div class="row rwd-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/drKL37ICdAQ?si=TykrfmCVOnhMJu57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+    <br />
+</section>
+
+<div class="background ludirex-back parallax" id="LudiLandingDesktop">
+    <br />
+</div>
+
+

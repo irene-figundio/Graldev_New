@@ -1,0 +1,140 @@
+﻿@using WebSite.Resources;
+@using Microsoft.AspNetCore.Mvc.Localization;
+@using WebSite.Model;
+
+@inject IOptions<AppInfo> AppInfo
+@inject IOptions<ContactsInfo> ContactsInfo
+@inject IOptions<MailSettings> MailSettings
+@model string
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = "AR";
+    Layout = "~/Views/Shared/_LayoutProject.cshtml";
+}
+
+
+
+@section styleImport {
+    <script src="~/Scripts/Project/AR/dropzone.min.js"></script>
+    <script src="~/Scripts/Project/AR/dist-dev/mindar-image.prod.js"></script>
+    <script src="~/Scripts/Project/AR/ARCompileHelper.js"></script>
+    <link rel="stylesheet" href="~/Scripts/Project/AR/dropzone.min.js">
+}
+
+
+<div class="landing-page" style="display:none;background: #f9f6f6fa;" id="ArLandingMobile">
+    <div class="content">
+        <div class="container" style="display: flex; justify-content: center;">
+            <div class="info">
+                <h1>GRALCALL AR</h1>
+                <p>@Html.Raw(@MainResource.ARAppDevelopmentDescription)</p>
+                @*<button  type ="button" data-bs-toggle="modal" data-bs-target="#myModal" data-title="Try">@Localizer[MainResource.TryIt]</button>*@
+            </div>
+            <div class="image">
+                <img src="~/asset/img/AR_Landing.png"/>
+            </div>  
+        </div>
+    </div>
+</div>
+
+<div class="background ar-back parallax" id="ArLandingDesktop">
+    <h1>GRALCALL AR</h1>
+</div>
+<div class="background ar-back parallax" id="ArLandingDesktop">
+    <br />
+</div>
+<section style="background: #f9f6f6fa;">
+    <div class="container">
+        <br />
+        <div class="row">
+            <h1><strong>@Localizer[@ProjectsResource.ARTitle]</strong><br /></h1>
+            <h3>@Localizer[@ProjectsResource.ARSubTitle]</h3>
+            <div class="block"></div>
+            <p>
+                 @Html.Raw(@ProjectsResource.GralCallDescripton)
+            </p>
+        </div>
+        <br />
+        <div class="row">
+            <div class="quoteLoop">
+                <blockquote class="quote">
+                    <h5>
+                         @Html.Raw(@ProjectsResource.Quote1AR)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote2AR)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote3AR)
+                    </h5>
+                </blockquote>
+                <blockquote class="quote">
+                    <h5>
+                        @Html.Raw(@ProjectsResource.Quote4AR)
+                    </h5>
+                </blockquote>
+            </div>
+        </div>
+        
+    </div>
+    <br />
+</section>
+<div class="background ar-back parallax" id="ArLandingDesktop">
+    <br />
+</div>
+<section id="gallery" style="background: #f9f6f6fa;">
+    <div class="container" id="wrapper">
+        <br />
+        <h1>Gallery</h1>
+        <div class="row">           
+            <h3>Robert Vignola & Trivigno</h3>
+            <div class="block"></div>
+            <p>
+                @Localizer[ProjectsResource.ArGalleryDesc]
+            </p>
+        </div>
+        <div class="block"></div>
+       
+        <div class="row " style="display: flow-root;justify-content: center;object-fit:scale-down;">
+           @*
+            <div class="three columns "><img src="~/asset/img/Trivigno/1_res.png" class="image" onclick="openModal();currentSlide(1)" alt="Work Two" /></div>                    
+            <div class="three columns "> <img src="~/asset/img/Trivigno/2.jpg" class="image" onclick="openModal();currentSlide(2)" alt="Work Three" /></div>
+            <div class="three columns "> <img src="~/asset/img/Trivigno/3.jpg" class="image" onclick="openModal();currentSlide(3)" alt="Work Four" /></div>
+            *@
+            <div class="three columns" >
+                <a href="~/asset/img/Trivigno/1.jpg" data-lightbox="roadtrip"><img src="~/asset/img/Trivigno/1_res.png" class="image" /></a>
+            </div>
+            <div class="three columns ">
+                <a href="~/asset/img/Trivigno/2.jpg" data-lightbox="roadtrip"><img src="~/asset/img/Trivigno/2.jpg" class="image" /></a>
+            </div>
+            <div class="three columns ">
+                <a href="~/asset/img/Trivigno/3.jpg" data-lightbox="roadtrip"><img src="~/asset/img/Trivigno/3.jpg" class="image" /></a>
+            </div>
+            <div class="row " style="margin-top: 30px;">
+                <div class="three columns ">
+                    <a href="~/asset/img/Trivigno/4.jpg" data-lightbox="roadtrip"><img src="~/asset/img/Trivigno/4.jpg" class="image" /></a>
+                </div>
+                <div class="three columns ">
+                    <a href="~/asset/img/Trivigno/5.jpg" data-lightbox="roadtrip"><img src="~/asset/img/Trivigno/5.jpg" class="image" /></a>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row " style="margin-top: 30px;">
+          
+            @*
+            <div class="three columns "> <img src="~/asset/img/Trivigno/4.jpg" class="image" onclick="openModal();currentSlide(4)" alt="Work Five" /></div>
+            <div class="three columns "> <img src="~/asset/img/Trivigno/5.jpg" class="image" onclick="openModal();currentSlide(5)" alt="Work Six" /></div>
+            *@
+        </div>
+    </div>
+    <br />
+</section>
+
+<div class="background ar-back parallax" id="ArLandingDesktop">
+    <br />
+</div>

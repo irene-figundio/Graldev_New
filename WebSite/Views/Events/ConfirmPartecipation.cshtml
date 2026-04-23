@@ -1,0 +1,430 @@
+﻿@model ConfirmPartecipationViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@using WebSite.Resources
+
+@inject IViewLocalizer Localizer
+
+@{
+    Layout = null;   // ← Importante
+    ViewData["Title"] = "Confirm Participation";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT & TAILWIND -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#000080",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0f0f23",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+            color: #fff;
+            background: #000000 !important;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        #nebulaBackground {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #tsparticles {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .max-w-xl {
+            max-width: 48rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- PARTICLE BACKGROUND -->
+    <div id="tsparticles"><canvas id="nebulaBackground"></canvas></div>
+
+    <div class="dark:bg-background-dark font-display text-white">
+        <div class="relative flex min-h-screen w-full flex-col items-center overflow-x-hidden p-4 sm:p-6 md:p-8">
+            <div class="relative z-10 flex w-full max-w-4xl flex-col items-center gap-8 py-10 md:py-20">
+
+                <!-- TITLE -->
+                <div class="flex flex-col gap-4 text-center">
+                    <h1 class="text-5xl font-bold tracking-tighter text-white md:text-7xl">
+                        @Localizer[EventsResource.InvitationTitle]
+                    </h1>
+                    <p class="text-lg text-gray-300 md:text-xl text-white">
+                        @Localizer[EventsResource.InvitationSubtitle]
+                    </p>
+                </div>
+
+                <!-- VIDEO + FORM SIDE BY SIDE -->
+                <div class="w-full max-w-5xl flex flex-col lg:flex-row gap-10 lg:items-start">
+
+                    <!-- 🎥 VIDEO 9:16 -->
+                    <div class="w-full lg:w-1/2 flex justify-center">
+                        <div class="relative bg-cover bg-center rounded-xl shadow-2xl shadow-primary/30"
+                             style="width:100%; max-width:380px; aspect-ratio:9/16;max-height: 520px;
+                    background-image: linear-gradient(rgba(15, 15, 35, 0.2), rgba(15, 15, 35, 0.5))">
+
+                            <iframe class="absolute inset-0 w-full h-full"
+                                    src="https://www.youtube.com/embed/DKxW9kAhlHY?autoplay=0&modestbranding=1&playsinline=1&rel=0&showinfo=0"
+                                    title="YouTube Shorts"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- 📝 FORM -->
+                    <div class="w-full lg:w-1/2 rounded-xl border border-[#2e2e6b] bg-[#171736]/80 p-6 backdrop-blur-sm sm:p-8">
+
+                        @if (Model.ShowConfirmation)
+                        {
+                            <div class="text-center text-white">
+                                <h2 class="text-2xl font-bold">@Localizer[EventsResource.ConfirmationMessageTitle]</h2>
+                                <p class="mt-4">@Localizer[EventsResource.ConfirmationMessage]</p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="text-center mb-6">
+                                <h4 class="text-sm font-bold uppercase tracking-widest text-[#8d8dce]">
+                                    @Localizer[EventsResource.ConfirmPresenceTitle]
+                                </h4>
+                                <h2 class="mt-2 text-3xl font-bold">@Localizer[EventsResource.JoinExperienceTitle]</h2>
+                            </div>
+
+                            <form class="flex flex-col gap-6"
+                                  asp-controller="Events"
+                                  asp-action="Submit"
+                                  method="post">
+
+                                <input type="hidden" asp-for="Input.Email" />
+
+                                <!-- NAME -->
+                                <div>
+                                    <label asp-for="Input.FullName" class="mb-2 block text-sm font-medium text-gray-300">
+                                        @Localizer[EventsResource.FullNameLabel]*
+                                    </label>
+                                    <input asp-for="Input.FullName" class="w-full rounded-lg border border-[#2e2e6b]
+                               bg-white text-gray-900 px-4 py-3"
+                                           placeholder="@Localizer[EventsResource.FullNamePlaceholder]" />
+                                    <span asp-validation-for="Input.FullName" class="text-red-500 text-sm"></span>
+                                </div>
+
+                                <!-- PHONE -->
+                                <div>
+                                    <label asp-for="Input.Telephone" class="mb-2 block text-sm font-medium text-gray-300">
+                                        @Localizer[EventsResource.TelephoneLabel]*
+                                    </label>
+                                    <input asp-for="Input.Telephone" class="w-full rounded-lg border border-[#2e2e6b]
+                               bg-white text-gray-900 px-4 py-3"
+                                           placeholder="@Localizer[EventsResource.TelephonePlaceholder]" />
+                                    <span asp-validation-for="Input.Telephone" class="text-red-500 text-sm"></span>
+                                </div>
+
+                                <!-- COMPANY -->
+                                <div>
+                                    <label asp-for="Input.Company" class="mb-2 block text-sm font-medium text-gray-300">
+                                        @Localizer[EventsResource.CompanyLabel]
+                                    </label>
+                                    <input asp-for="Input.Company" class="w-full rounded-lg border border-[#2e2e6b]
+                               bg-white text-gray-900 px-4 py-3"
+                                           placeholder="@Localizer[EventsResource.CompanyPlaceholder]" />
+                                </div>
+
+                                <button type="submit"
+                                        class="mt-2 flex h-14 w-full items-center justify-center rounded-lg
+                                   bg-primary text-lg font-bold text-white shadow-lg hover:bg-primary/90">
+                                    @Localizer[EventsResource.SubmitButton]
+                                </button>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+
+            <!-- ⭐⭐⭐ EVENT CARDS ⭐⭐⭐ -->
+            <div class="w-full max-w-3xl pt-8">
+                <h4 class="text-center text-sm font-bold uppercase tracking-widest text-[#8d8dce] text-white">
+                    @Localizer[EventsResource.EventDetailsTitle]
+                </h4>
+            </div>
+
+            <div class="grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- DATE -->
+                <div class="flex flex-1 flex-col gap-3 rounded-xl border border-[#2e2e6b] bg-[#171736]/80 p-5">
+                    <span class="material-symbols-outlined text-3xl">calendar_month</span>
+                    <div>
+                        <h2 class="text-lg font-bold">@Localizer[EventsResource.EventDate]</h2>
+                        <p class="text-sm text-[#8d8dce]">@Localizer[EventsResource.EventTime]</p>
+                    </div>
+                </div>
+
+                <!-- LOCATION -->
+                <div class="flex flex-1 flex-col gap-3 rounded-xl border border-[#2e2e6b] bg-[#171736]/80 p-5">
+                    <span class="material-symbols-outlined text-3xl">location_on</span>
+                    <div>
+                        <h2 class="text-lg font-bold">@Localizer[EventsResource.EventLocation]</h2>
+                        <p class="text-sm text-[#8d8dce]">@Localizer[EventsResource.EventAddress]</p>
+                    </div>
+                </div>
+
+                <!-- BUFFET -->
+                <div class="flex flex-1 flex-col gap-3 rounded-xl border border-[#2e2e6b] bg-[#171736]/80 p-5 sm:col-span-2 lg:col-span-1">
+                    <span class="material-symbols-outlined text-3xl">chef_hat</span>
+                    <div>
+                        <h2 class="text-lg font-bold">@Localizer[EventsResource.EventAttire]</h2>
+                        <p class="text-sm text-[#8d8dce]">@Localizer[EventsResource.EventAttireSub]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER WITH FLAGS -->
+            <footer class="mt-20 w-full max-w-4xl border-t border-white/10 pt-8">
+                <div class="flex flex-col items-center justify-between gap-6 sm:flex-row">
+                        <img src="~/asset/img/logograldev.png" width="48"/>
+                    <p class="text-sm text-gray-400">@Localizer[EventsResource.FooterRights]</p>
+
+                   @*  <div class="flex items-center gap-4">
+                        <a href="?culture=it-IT&email=@Model.Input.Email" title="Italiano">
+                            <img class="h-5 w-7 rounded-sm" src="~/asset/img/flags/it.png" />
+                        </a>
+
+                        <a href="?culture=en-US&email=@Model.Input.Email" title="English" class="opacity-70 hover:opacity-100">
+                                <img class="h-5 w-7 rounded-sm" src="~/asset/img/flags/gb.png" />
+                        </a>
+                    </div> *@
+                </div>
+            </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTICLE JS & THREE.JS SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+    <script>
+        (async () => {
+            await tsParticles.load({
+                id: "tsparticles",
+                options: {
+                    "particles": {
+                        "number": {
+                            "value": 200,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#ffffff"
+                        },
+                        "shape": {
+                            "type": "circle"
+                        },
+                        "opacity": {
+                            "value": 0.8,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 2,
+                            "random": true,
+                            "anim": {
+                                "enable": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": false
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 0.5,
+                            "direction": "none",
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": false
+                            },
+                            "onclick": {
+                                "enable": false
+                            },
+                            "resize": true
+                        }
+                    },
+                    "retina_detect": true
+                }
+            });
+        })();
+
+        let camera, scene, renderer, clock;
+        let smokeParticles = [];
+        let starField;
+
+        initGalaxy();
+        animateGalaxy();
+
+        function initGalaxy() {
+            const canvas = document.getElementById("nebulaBackground");
+
+            renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            scene = new THREE.Scene();
+            clock = new THREE.Clock();
+
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 5000);
+            camera.position.z = 1000;
+
+            /* Lights */
+            scene.add(new THREE.AmbientLight(0x222222));
+            const light1 = new THREE.PointLight(0xff66ff, 3, 2000);
+            light1.position.set(800, 400, 1000);
+            scene.add(light1);
+
+            const light2 = new THREE.PointLight(0x00ccff, 2.5, 1800);
+            light2.position.set(-800, -300, 900);
+            scene.add(light2);
+
+            /* Nebula smoke */
+            const smokeTexture = new THREE.TextureLoader().load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png");
+
+            const smokeMaterial = new THREE.MeshLambertMaterial({
+                map: smokeTexture,
+                transparent: true,
+                opacity: 0.75,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+
+            const smokeGeo = new THREE.PlaneGeometry(600, 600);
+
+            for (let i = 0; i < 200; i++) {
+                const p = new THREE.Mesh(smokeGeo, smokeMaterial);
+                p.position.set(
+                    Math.random() * 1800 - 900,
+                    Math.random() * 1800 - 900,
+                    Math.random() * -2000
+                );
+                p.rotation.z = Math.random() * Math.PI * 2;
+                const s = 1 + Math.random() * 2.5;
+                p.scale.set(s, s, 1);
+
+                smokeParticles.push(p);
+                scene.add(p);
+            }
+
+            /* Stars */
+            const starGeo = new THREE.BufferGeometry();
+            const starCount = 3400;
+
+            const positions = new Float32Array(starCount * 3);
+
+            for (let i = 0; i < starCount * 3; i += 3) {
+                positions[i] = Math.random() * 3000 - 1500;
+                positions[i + 1] = Math.random() * 3000 - 1500;
+                positions[i + 2] = Math.random() * -3000;
+            }
+
+            starGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 3.5,
+                transparent: true,
+                opacity: 1,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true
+            });
+
+            starField = new THREE.Points(starGeo, starMaterial);
+            scene.add(starField);
+
+            window.addEventListener("resize", onResize);
+        }
+
+        function animateGalaxy() {
+            requestAnimationFrame(animateGalaxy);
+
+            const delta = clock.getDelta();
+
+            smokeParticles.forEach((p, i) => {
+                p.rotation.z += delta * (0.04 + Math.random() * 0.015);
+
+                const t = clock.elapsedTime * 0.25;
+                p.material.color.setRGB(
+                    0.4 + Math.sin(t + i) * 0.3,
+                    0.4 + Math.sin(t * 0.5 + i) * 0.3,
+                    0.5 + Math.sin(t * 0.8 + i) * 0.3
+                );
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        function onResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    </script>
+    
+</body>
+</html>
