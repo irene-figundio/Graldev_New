@@ -1,10 +1,13 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using WebSite.Resources
+@inject IViewLocalizer Localizer
 <!DOCTYPE html>
 <html class="dark" lang="en">
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>GRALDEV | Enterprise Systems</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <script id="tailwind-config">
@@ -172,7 +175,9 @@
                 <span class="hidden lg:block absolute left-16 top-1/2 -translate-y-1/2 px-2 py-1 bg-neon-green text-charcoal text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">CORE</span>
             </a>
         </div>
-        <div class="lg:mt-auto flex items-center justify-center">
+        <div class="lg:mt-auto flex flex-col items-center justify-center gap-4 mb-4">
+            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">IT</a>
+            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">EN</a>
             <button class="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-neon-green transition-colors">
                 <span class="material-symbols-outlined text-xs">power_settings_new</span>
             </button>
@@ -187,9 +192,9 @@
                     <div class="data-point">© 2024 SYSTEM_CORE_INTEGRATION</div>
                 </div>
                 <div class="flex flex-col md:flex-row items-center gap-4 lg:gap-8 font-mono text-[10px] lg:text-[11px] uppercase tracking-widest text-neutral-500">
-                    <a class="hover:text-neon-green transition-colors" href="#">Privacy_Protocols</a>
-                    <a class="hover:text-neon-green transition-colors" href="#">Term_Parameters</a>
-                    <a class="hover:text-neon-green transition-colors text-neon-green" href="#">[ SYS_STATUS: OPTIMAL ]</a>
+                    <a class="hover:text-neon-green transition-colors" asp-controller="Home" asp-action="Privacy">@Localizer["PrivacyProtocols"]</a>
+                    <a class="hover:text-neon-green transition-colors" href="#">@Localizer["TermParameters"]</a>
+                    <a class="hover:text-neon-green transition-colors text-neon-green" href="#">@Localizer["SysStatus"]</a>
                 </div>
             </div>
         </footer>
@@ -220,7 +225,7 @@
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
 
-                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゾドボポヴッン';
                 const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 const nums = '0123456789';
                 const alphabet = katakana + latin + nums;
@@ -276,6 +281,64 @@
                 }
             });
         })();
+
+        // Cookie Banner Logic
+        $(document).ready(function() {
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+            if (!getCookie("accepted_cookies")) {
+                $("#cookie-banner").removeClass("hidden").addClass("animate-bounce-subtle");
+            }
+
+            $("#accept-cookies").click(function() {
+                setCookie("accepted_cookies", "true", 30);
+                $("#cookie-banner").fadeOut(500);
+            });
+        });
     </script>
+
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[250] p-4 lg:ml-20 hidden">
+        <div class="glass-terminal p-6 flex flex-col md:flex-row items-center gap-6 max-w-7xl mx-auto border-t-4 border-neon-green">
+            <div class="flex-1 font-mono text-xs lg:text-sm text-neutral-300">
+                <span class="text-neon-green font-bold">COOKIE_DETECTION:</span>
+                @CookiesResource.CookieBannerInfo
+                <a asp-controller="Home" asp-action="Privacy" class="text-neon-green hover:underline decoration-neon-green/30 underline-offset-4">@CookiesResource.ClickHere</a>
+                <br />
+                <span class="data-point block mt-2">@CookiesResource.CookieBannerWarning</span>
+            </div>
+            <button id="accept-cookies" class="whitespace-nowrap border-2 border-neon-green px-8 py-3 font-mono font-bold text-neon-green hover:bg-neon-green hover:text-charcoal transition-all shadow-[0_0_15px_rgba(55,210,138,0.2)]">
+                ACCEPT_PROTOCOL.EXE
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @@keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 2s infinite;
+        }
+    </style>
 </body>
 </html>

@@ -1,3 +1,5 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_NewLayout.cshtml";
@@ -19,19 +21,19 @@
             </div>
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-none mb-6 tracking-tighter">
                 GRAL<span class="text-neon-green green-text-glow">DEV</span><br />
-                <span class="text-xl lg:text-2xl font-mono block mt-2 text-neutral-400">ENTERPRISE_SYSTEMS_v2.0</span>
+                <span class="text-xl lg:text-2xl font-mono block mt-2 text-neutral-400">@Localizer["HeroSubtitle"]</span>
             </h1>
             <p class="font-mono text-sm lg:text-lg text-neon-green/80 mb-8 lg:mb-10 max-w-xl leading-relaxed">
-                &gt; ARCHITECTING SEAMLESS CONNECTIVITY<br />
-                &gt; MAPPING DATA NEURAL NETWORKS<br />
-                &gt; EXECUTE INTEGRATION_PROTOCOL.EXE
+                @Localizer["HeroLine1"]<br />
+                @Localizer["HeroLine2"]<br />
+                @Localizer["HeroLine3"]
             </p>
             <div class="flex flex-wrap gap-4">
                 <button class="flex-1 lg:flex-none bg-neon-green text-charcoal px-6 lg:px-8 py-4 font-mono font-bold hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all text-sm lg:text-base">
-                    INITIATE_CONTACT()
+                    @Localizer["HeroButton1"]
                 </button>
                 <button class="flex-1 lg:flex-none border border-neon-green text-neon-green px-6 lg:px-8 py-4 font-mono hover:bg-neon-green/10 transition-all text-sm lg:text-base">
-                    READ_DOCS.MD
+                    @Localizer["HeroButton2"]
                 </button>
             </div>
             <div class="mt-10 lg:mt-12 flex justify-between items-end">
@@ -51,9 +53,9 @@
 <section class="py-20 lg:py-32 px-4 lg:px-12 relative overflow-hidden bg-black/20" id="services-carousel-section">
     <div class="absolute inset-0 spiral-bg pointer-events-none"></div>
     <div class="container mx-auto relative z-10 text-center mb-12 lg:mb-16">
-        <div class="data-point mb-4 border-b border-neon-green/30 inline-block px-4 pb-1">CORE_COMPUTE_SERVICES</div>
-        <h2 class="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter uppercase mb-2">Neural <span class="text-neon-green">Solutions</span> Matrix</h2>
-        <p class="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">[ DRAG TO ROTATE DATASTREAM ]</p>
+        <div class="data-point mb-4 border-b border-neon-green/30 inline-block px-4 pb-1">@Localizer["ServicesTag"]</div>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter uppercase mb-2">@Localizer["ServicesTitle"]</h2>
+        <p class="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">@Localizer["CarouselHint"]</p>
     </div>
     <div class="relative h-[450px] lg:h-[550px] w-full max-w-5xl mx-auto carousel-container select-none" id="carousel-wrapper">
         <div class="carousel-inner w-full h-full relative" id="carousel-inner">
@@ -62,7 +64,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">cloud_done</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Nexus_Cloud</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Adaptive infrastructure scaling with sub-millisecond propagation latency.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
             <div class="carousel-item group" data-index="1">
@@ -70,7 +72,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">security</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Vault_Secure</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Hardware-isolated encryption modules for sensitive enterprise data assets.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
             <div class="carousel-item group" data-index="2">
@@ -78,7 +80,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">insights</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Data_Vision</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Predictive modeling utilizing deep-layer recursive neural networks.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
             <div class="carousel-item group" data-index="3">
@@ -86,7 +88,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">settings_input_component</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">API_Flow</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Universal connector protocols for legacy-to-future integration chains.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
             <div class="carousel-item group" data-index="4">
@@ -94,7 +96,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">satellite_alt</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Edge_Sync</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Globally distributed computation nodes for optimized user experience.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
             <div class="carousel-item group" data-index="5">
@@ -102,7 +104,7 @@
                     <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">stream</span>
                     <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Pulse_Stream</h3>
                     <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Real-time telemetry and monitoring with automated failure recovery.</p>
-                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">VIEW_DETAILS.EXE</button>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
             </div>
         </div>
@@ -121,16 +123,16 @@
     <div class="container mx-auto">
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
             <div class="w-full lg:w-1/2">
-                <div class="data-point mb-4 text-neon-green border-l-2 border-neon-green pl-4">MODULE_02: WHY_CHOOSE_US</div>
-                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">Strategic<br /><span class="text-neon-green">Innovation</span> Logic</h2>
+                <div class="data-point mb-4 text-neon-green border-l-2 border-neon-green pl-4">@Localizer["WhyChooseUsTag"]</div>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">@Html.Raw(Localizer["WhyChooseUsTitle"].Value)</h2>
                 <div class="grid grid-cols-1 gap-6">
                     <div class="glass-terminal p-6 border-l-4 border-neon-green">
-                        <h4 class="font-mono text-neon-green mb-2 tracking-widest text-sm lg:text-base">01. RAPID_DEPLOY</h4>
-                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">Automated microservice orchestration via proprietary nexus-pipes.</p>
+                        <h4 class="font-mono text-neon-green mb-2 tracking-widest text-sm lg:text-base">@Localizer["WhyChooseUs1Title"]</h4>
+                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">@Localizer["WhyChooseUs1Text"]</p>
                     </div>
                     <div class="glass-terminal p-6 border-l-4 border-neutral-600">
-                        <h4 class="font-mono text-neutral-300 mb-2 tracking-widest text-sm lg:text-base">02. CYBER_SHIELD</h4>
-                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">End-to-end quantum-resistant packet encryption protocols.</p>
+                        <h4 class="font-mono text-neutral-300 mb-2 tracking-widest text-sm lg:text-base">@Localizer["WhyChooseUs2Title"]</h4>
+                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">@Localizer["WhyChooseUs2Text"]</p>
                     </div>
                 </div>
             </div>
@@ -148,8 +150,8 @@
 <section class="py-20 lg:py-32 px-6 lg:px-12 bg-charcoal">
     <div class="container mx-auto">
         <div class="mb-16 lg:mb-20 text-center">
-            <div class="data-point mb-2">SYSTEM_CAPABILITIES_MANIFEST</div>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black uppercase tracking-tighter">Integration Ecosystem</h2>
+            <div class="data-point mb-2">@Localizer["ManifestTag"]</div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black uppercase tracking-tighter">@Localizer["ManifestTitle"]</h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             <div class="monitor-frame glass-terminal p-6 lg:p-8 isometric-card">
@@ -205,61 +207,61 @@
     </div>
     <div class="container mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
-            <div class="data-point mb-4">ESTABLISHED_UPLINK_CHANNELS</div>
-            <h2 class="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase mb-4">Strategic <span class="text-neon-green">Nodes</span></h2>
+            <div class="data-point mb-4">@Localizer["NodesTag"]</div>
+            <h2 class="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase mb-4">@Html.Raw(Localizer["NodesTitle"].Value)</h2>
             <div class="h-0.5 w-24 bg-neon-green/30 mx-auto"></div>
         </div>
         <div class="relative w-full overflow-hidden group">
             <div class="flex whitespace-nowrap animate-scroll gap-12 lg:gap-24 items-center py-8">
                 <!-- Set 1 -->
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">rocket_launch</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">TECHFORGE_NODE</span>
+                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">hub</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">NEXUS_UPLINK</span>
+                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">pentagon</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">QUANTUM_CORE</span>
+                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">all_inclusive</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">INFINITY_STRAT</span>
+                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">emergency_recording</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">PULSE_ARRAY</span>
+                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">database</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">DATA_RELAY</span>
+                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
                 </div>
                 <!-- Duplicate for seamless loop -->
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">rocket_launch</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">TECHFORGE_NODE</span>
+                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">hub</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">NEXUS_UPLINK</span>
+                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">pentagon</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">QUANTUM_CORE</span>
+                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">all_inclusive</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">INFINITY_STRAT</span>
+                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">emergency_recording</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">PULSE_ARRAY</span>
+                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
                 </div>
                 <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <span class="material-symbols-outlined text-5xl text-neon-green mb-4 hologram-logo">database</span>
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">DATA_RELAY</span>
+                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
                 </div>
             </div>
             <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-charcoal to-transparent z-10 pointer-events-none"></div>
@@ -273,23 +275,24 @@
         <div class="monitor-frame glass-terminal max-w-5xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="p-6 lg:p-10 border-b md:border-b-0 md:border-r border-neon-green/10">
-                    <div class="data-point mb-6">USER_INPUT_REQUIRED</div>
-                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-8">Initiate_Handshake</h2>
+                    <div class="data-point mb-6">@Localizer["ContactTag"]</div>
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-8">@Localizer["ContactTitle"]</h2>
                     <form asp-controller="Home" asp-action="SendEmail" method="post" id="contactForm" class="space-y-6">
+                        @Html.AntiForgeryToken()
                         <div>
-                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">ORG_NAME</label>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormOrg"]</label>
                             <input class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="ROOT@COMPANY" type="text" name="orgName" />
                         </div>
                         <div>
-                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">EMAIL_ENDPOINT</label>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormEmail"]</label>
                             <input class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="ADMIN@NETWORK" type="email" name="email" required />
                         </div>
                         <div>
-                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">REQ_PAYLOAD</label>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormPayload"]</label>
                             <textarea class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="DESCRIBE INTEGRATION PARAMETERS..." rows="4" name="request" required></textarea>
                         </div>
                         <button type="submit" class="w-full border-2 border-neon-green py-4 font-mono font-bold text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">
-                            EXECUTE_REQUEST.SEND()
+                            @Localizer["FormSubmit"]
                         </button>
                     </form>
                     <div id="formResponse" class="mt-4 font-mono text-xs"></div>
@@ -298,11 +301,11 @@
                     <img alt="Map Visualization" class="w-full h-full object-cover opacity-30 grayscale sepia hue-rotate-[80deg] saturate-[2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_tZHepD0uhzq_aVxslFV1ug16edQDuNaP4QhxBAyRONC8xOIL7HAYirlB71D5IqaUvJA8cIYfKIFDw7aOYxTMyCVKrOurVWS73UR7emTi1m29c6JEmubXWHEy0Ri-bQIIPRYMls5toG0BUfYr17iftEnOzk2_fdEeOC2IAXwCleJaK-bo5CiLWLxLI6rYQhskoA4TxGmRzyRLvg6hPNdDTKIak9Cf333ovIrpZBZDmWFgHwQAmrLmBEot0D1nGw7RUv-fmOeIQ84" />
                     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at center, transparent, #0a0a0c);"></div>
                     <div class="absolute bottom-6 left-6 border-l-2 border-neon-green pl-4 bg-charcoal/80 p-4 backdrop-blur-sm">
-                        <div class="data-point">GEOLOCATION: 51.505, -0.09</div>
-                        <div class="font-mono text-xs lg:text-sm mt-1">HQ_LONDON_CANARY_WHARF</div>
+                        <div class="data-point">@Localizer["Geolocation"]</div>
+                        <div class="font-mono text-xs lg:text-sm mt-1">@Localizer["HQ"]</div>
                         <div class="flex items-center gap-2 mt-3">
                             <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
-                            <span class="data-point text-neon-green">ONLINE_ACTIVE</span>
+                            <span class="data-point text-neon-green">@Localizer["StatusActive"]</span>
                         </div>
                     </div>
                 </div>
@@ -459,6 +462,9 @@
                 $.ajax({
                     url: form.attr('action'),
                     type: 'POST',
+                    headers: {
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
                     data: {
                         email: form.find('input[name="email"]').val(),
                         request: combinedRequest
