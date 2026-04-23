@@ -1,633 +1,487 @@
-﻿@using WebSite.Resources
-@using WebSite.Model
 @using Microsoft.AspNetCore.Mvc.Localization
-
 @inject IViewLocalizer Localizer
-
-@inject IOptions<AppInfo> AppInfo
-@inject IOptions<ContactsInfo> ContactsInfo
-@inject IOptions<MailSettings> MailSettings
-
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
 
-@* message modals *@
-<!-- Success Modal -->
-<!-- Frame Modal Top Info-->
-<div class="modal fade " id="success-box" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog  modal-dialog-centered" role="document">
-        <!--Content-->
-        <div class="modal-content" style="background: linear-gradient(to bottom left,#B0DB7D 40%, #99DBB4 100%); border-radius: 20px; box-shadow: 5px 5px 20px rgba(#CBCDD3, 10%);">
-            <!--Body-->
-            <div class="modal-body">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <p class="pt-3 pr-2" style="text-align: center; text-transform: uppercase; font-family: monospace; font-weight: bold;color:white;">
-                        <strong> <i class="fa-solid fa-face-smile-beam fa-bounce fa-2xl" style="color: #f5f5f5;"></i>  </strong><br />
-                        @Localizer[Message.SendSuccess]
-                    </p>
-                    <button id="closeSuccessModal" role="button" class="btn original-button-Success" data-dismiss="modal"> @Localizer[Message.OK]</button>
+<section class="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 lg:px-12 overflow-hidden border-b border-neon-green/10">
+    <div class="absolute right-[-20%] lg:right-[-10%] top-1/2 -translate-y-1/2 w-full lg:w-2/3 h-[60%] lg:h-[80%] opacity-30 lg:opacity-40 pointer-events-none">
+        <img alt="Digital Blueprint Wireframe" class="w-full h-full object-contain mix-blend-screen grayscale contrast-150 brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDux_tq-j7grrdes9ZWlRZO7js_HTW7y_7qnbalJa5sAqIiSWQJBWMSX4_HDHjfa5rReEyHBlG1yI0D3mcP0_FRtvl9DLzLCVaFeGOO7_nktJ5727BLZKIhPy3F_pK5l-CEiOcxoCCuOF1u8gaPpvquD7AvArdaXo_qmFLSqzLxPniH7lhhctM6TNmSXrfhUR_fdlqWnwgBLpWVg7fkCt2atgOpgmFJ_OTvHn5q8ib8tP6YReVWFc4XxxEp_OEl19e5yRJopXBToNQ" style="filter: sepia(100%) saturate(1000%) hue-rotate(80deg);" />
+    </div>
+    <div class="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="monitor-frame glass-terminal p-6 lg:p-10">
+            <div class="flex items-center gap-4 mb-6 lg:mb-8 border-b border-neon-green/20 pb-4">
+                <div class="flex gap-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
                 </div>
+                <div class="data-point">SYS_ARCH // BOOT_SEQ: SUCCESS</div>
             </div>
-        </div>
-        <!--/.Content-->
-    </div>
-</div>
-
-<!-- Error Modal -->
-<!-- Frame Modal Top Info-->
-<div class="modal fade " id="error-box" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <!--Content-->
-        <div class="modal-content" style="background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);
-  border-radius: 20px;
-  box-shadow: 5px 5px 20px rgba(#CBCDD3, 10%);">
-            <!--Body-->
-            <div class="modal-body">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="pt-3 pr-2" style="text-align: center; text-transform: uppercase; font-family: monospace; font-weight: bold;color:white;">
-                        <strong> <i class="fa-solid fa-face-frown-open fa-bounce fa-2xl move" style="color:white;"></i> </strong><br />
-                        <div id="modalMessage">
-                            @Localizer[Message.SomeWrong]
-                        </div>
-                    </div>
-                    <button id="closeErrorModal" role="button" class="btn original-button" data-dismiss="modal">
-                        @Localizer[Message.riprova]
-                    </button>
-                </div>
-
-            </div>
-        </div>
-        <!--/.Content-->
-    </div>
-</div>
-
-
-
-<div class="home" style="display: flex; justify-content: center;" id="topLanding">
-    <video preload="metadata" poster="~/asset/img/backgrounddesktop.png" id="videoDesktop" muted loop autoplay playsinline>
-        <source src="~/asset/video/videobackground.mp4" type="video/mp4" />
-    </video>
-    <video preload="metadata" poster="~/asset/img/backgrounddesktop.png" id="videoMobile" muted loop autoplay playsinline style="display:none;">
-        <source src="~/asset/video/videobackground.mp4" type="video/mp4" />
-    </video>
-    @*<div class="reveal heading" id="titleReveal">
-    <h1 >Graldev</h1>
-    </div>
-    <br />
-    <div class="reveal heading" id="SubTitleReveal">
-    <h1 >@Localizer[MainResource.SubTitle]</h1>
-    </div>*@
-
-
-    <div class="title" style=" text-align: center;">
-        <p class="heading">
-            <h1 class="reveal">Graldev </h1>
-            <br />
-            <br />
-        </p>
-        <p class="heading">
-            <h2 class="reveal">@Localizer[MainResource.SubTitle]</h2>
-            <br />
-        </p>
-        <a href="#about">
-            <div class="scrolling2 hidden-sm-up">
-                <div class="mouse2">
-
-                    <div class="wheel"></div>
-                </div>
-                <div>
-                    <span class="unu center"></span>
-                    <span class="doi center"></span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-</div>
-<section id="spacebar1" style="background: #f9f6f6fa;">
-    <br />
-</section>
-
-<section id="spaceBar" style="background: #f9f6f6fa;">
-    <br />
-</section>
-
-<div class="background one parallax">
-    <h1>@Localizer[ClientsResource.TitleClientsection]</h1>
-</div>
-<!-- About Section
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-<section id="about" style="background: #f9f6f6fa;">
-    <div class="container">
-        <div class="row">
-            <h1 class="titleHome" style="display:none;text-align:center;font-weight: 600;text-transform: uppercase;">
-                @Localizer[ClientsResource.TitleClientsection]
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-black leading-none mb-6 tracking-tighter">
+                GRAL<span class="text-neon-green green-text-glow">DEV</span><br />
+                <span class="text-xl lg:text-2xl font-mono block mt-2 text-neutral-400">@Localizer["HeroSubtitle"]</span>
             </h1>
-            <div class="block"></div>
-            <p>
-                <h3 style="font-size: 3.0rem !important;text-align:center;"><span class="typcn typcn-device-desktop icon"></span><strong style="text-align:center"> @Localizer[ClientsResource.canHelpClient] </strong></h3>
-                @Html.Raw(ClientsResource.MissionClient)
+            <p class="font-mono text-sm lg:text-lg text-neon-green/80 mb-8 lg:mb-10 max-w-xl leading-relaxed">
+                @Localizer["HeroLine1"]<br />
+                @Localizer["HeroLine2"]<br />
+                @Localizer["HeroLine3"]
             </p>
-        </div>
-        <div class="row">
-
-            <section class="grid-1" style="background:transparent !important">
-                
-                <div class="item-1" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('System','asset/img/modals/sys.jpg')" style="text-align:center;">
-                        <img width="76" height="76" src="~/asset/img/icons/puzzle.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">  Systems  Integration</span>
+            <div class="flex flex-wrap gap-4">
+                <button class="flex-1 lg:flex-none bg-neon-green text-charcoal px-6 lg:px-8 py-4 font-mono font-bold hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all text-sm lg:text-base">
+                    @Localizer["HeroButton1"]
+                </button>
+                <button class="flex-1 lg:flex-none border border-neon-green text-neon-green px-6 lg:px-8 py-4 font-mono hover:bg-neon-green/10 transition-all text-sm lg:text-base">
+                    @Localizer["HeroButton2"]
+                </button>
+            </div>
+            <div class="mt-10 lg:mt-12 flex justify-between items-end">
+                <div class="space-y-1">
+                    <div class="data-point">LATENCY: 12ms</div>
+                    <div class="data-point">UPTIME: 99.999%</div>
                 </div>
-                <div class="item-2" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('App','asset/img/modals/run.png')" style="text-align:center;">
-                        <img width="78" height="78" src="~/asset/img/icons/videogame.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;"> Mobile Apps<br /> &<br /> Videogames</span>
+                <div class="w-24 lg:w-32 h-1 bg-neon-green/20 relative">
+                    <div class="absolute top-0 left-0 h-full w-2/3 bg-neon-green animate-pulse"></div>
                 </div>
-                <div class="item-3" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Api','asset/img/modals/amaz.jpg')" >
-                        <img width="90" height="90" src="/asset/img/icons/e-commerce.png" style="margin: -5px;">
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">Amazon ,eBay <br /> & <br /> Shopify  WebAPI</span>
-                </div>
-               
-                <div class="item-4" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Tlc','asset/img/modals/support.jpg')" >
-                        <img width="78" height="78" src="~/asset/img/icons/support_new.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;"> @Localizer[ClientsResource.TlcclientTitle]</span>
-                </div> 
-                <div class="item-5" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Mana','asset/img/modals/gestionale.jpg')" >
-                        <img width="78" height="78" src="~/asset/img/icons/gestionali.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">@Localizer[ClientsResource.GestClientTitle]</span>
-                </div>
-                <div class="item-6" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('AR','asset/img/modals/3d.png')" >
-                        <img width="78" height="78" src="~/asset/img/icons/grafica.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">AR App<br /> &<br />3D Modeling</span>
-                </div>
-                <div class="item-7" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Mark','asset/img/modals/AI_Image_content.png')" >
-                        <img width="78" height="78" src="~/asset/img/icons/AI_Image.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;"> @Localizer[MainResource.AI_Content_title]</span>
-                </div>
-                <div class="item-8" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Social','asset/img/modals/Vitinerario.png')" >
-                        <img width="78" height="78" src="~/asset/img/icons/AI_API.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">@Localizer[MainResource.AI_API]</span>
-                </div>
-               
-                @*
-                    <div class="item-5-s" style="background:transparent;text-align: center;">
-                </div>
-                    <div class="item-7" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Mark','asset/img/modals/marketin.jpg')">
-                    <img width="64" height="64" src="~/asset/img/icons/marketing.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;"> @Localizer[ClientsResource.MarketingClientTitle]</span>
-                    </div>
-                    <div class="item-8" style="background:transparent;text-align: center;">
-                    <button class="circle-icon-button btn btn-primary" onclick="openModal('Social','asset/img/modals/social.jpg')">
-                    <img width="64" height="64" src="~/asset/img/icons/social.png" style="margin:-3px;" />
-                    </button>
-                    <span style="font-size: 1rem ;color:black;text-align: center; display: block;">Social Networks <br /> Management </span>
-                    </div>
-                *@
-               
-
-            </section>
-        </div>
-        <div class="row">
-            <div class="block"></div>
-            <p>
-                <h1 style="text-align:center"> @Html.Raw(ClientsResource.KnowMore) </h1>
-            </p>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="bkgmobile" style="display:none;width:100%;">
-    <img class="Imgbkgmobile" src="~/asset/img/computer.jpg" />
-</div>
-
-<div class="background threeB parallax">
-    <h1>@Localizer[MainResource.CustomersAndPartners]</h1>
-</div>
-<!-- Testimonials Section
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-
-<section id="testimonial" style="background: #f9f6f6fa;">
-    <div class="container">
-        <div class="row">
-            <h1 class="titleHome" style="display:none;text-align:center;font-weight: 600;text-transform: uppercase;">@Localizer[MainResource.CustomersAndPartners]</h1>
-            <div class="block"></div>
-            <br />
-        </div>
-        <section class="grid-1" style="background:transparent;">
-
-            <div class="item-1" style="background:transparent;text-align: center;align-content: center;">
-                <img src="~/asset/img/logoCIC.png" style="width: 85px; height:85px" />
-            </div>
-            <div class="item-2" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_feem.jpg" style="width: 133px;" />
-            </div>
-            <div class="item-3" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_unisob.png" style="width: 133px;" />
-            </div>
-            <div class="item-4" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/fastera-logo.png" style="width: 133px;" />
-            </div>
-            <div class="item-3" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_betflag.png" style="width: 133px;" />
-            </div>
-            <div class="item-5" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_beatdata.png" style="width: 133px;" />
-            </div>
-            <div class="item-6" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/LogoMicrosoft.png" style="width: 133px;" />
-            </div>
-            <div class="item-7" style="background:transparent;text-align: center;">
-                <img src="~/asset/img/logo_manthano.png" style="width: 80px;" />
-            </div>
-            <div class="item-8" style="background:transparent;text-align: center;align-content: center;">
-                <img src="~/asset/img/logo_vit.png" style="width: 133px;" />
-            </div>
-            <div class="item-9" style="background:transparent;align-content: center;">
-                @*cantine del notaio*@
-                <img src="~/asset/img/loco_cantine.png" style="width: 133px;" />
-            </div>
-            <div class="item-10" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_Soluzioni_dark.png" style="width: 133px;" />
-            </div>
-            <div class="item-11" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_studiodomino.png" style="width: 133px;" />
-            </div>
-            <div class="item-12" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/logo_astra.png" style="width: 133px;" />
-            </div>
-            <div class="item-13" style="background:transparent;align-content: center;">
-                <img src="~/asset/img/ofello_logo.png" style="width: 133px;" />
-            </div>
-            @* 
-            <div class="item-11" style="background:transparent;">
-                <img src="~/asset/img/dorenah.png" style="width: 133px;" />
-            </div> *@
-           
-        </section>
-
+<!-- 3D SPIRAL SERVICES CAROUSEL -->
+<section class="py-20 lg:py-32 px-4 lg:px-12 relative overflow-hidden bg-black/20" id="services-carousel-section">
+    <div class="absolute inset-0 spiral-bg pointer-events-none"></div>
+    <div class="container mx-auto relative z-10 text-center mb-12 lg:mb-16">
+        <div class="data-point mb-4 border-b border-neon-green/30 inline-block px-4 pb-1">@Localizer["ServicesTag"]</div>
+        <h2 class="text-3xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter uppercase mb-2">@Localizer["ServicesTitle"]</h2>
+        <p class="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">@Localizer["CarouselHint"]</p>
     </div>
-
-</section>
-
-<div class="bkgmobile" style="display:none;width:100%">
-    <img class="Imgbkgmobile" src="~/asset/img/ContactUs.jpg" />
-</div>
-
-<div class="background four parallax">
-    <h1>@Localizer[MainResource.ContactUs]</h1>
-</div>
-<!-- Contact Section
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<section id="spaceBar" style="background: #f9f6f6fa;">
-    <br />
-</section>
-<section id="ContactDesktop" style="background: #f9f6f6fa;">
-
-    <br />
-    <div class="container" style="display:flex;justify-content: center;flex-direction: row-reverse;">
-        <div class="block"></div>
-        <div style="border: 3px solid #607D8B;margin-left: 51px;">
-            <div class="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.4957946249706!2d15.834202912298624!3d40.641000141838866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1338e31862b2b7fb%3A0xf29e8cdc71b253fd!2sGraldev%20S.a.s.%20di%20Omar%20Marino!5e0!3m2!1sit!2sit!4v1695903543919!5m2!1sit!2sit" width="300" height="520" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-        <div class="row">
-            <div class="w3-large w3-margin-bottom">
-                <i class="fa fa-map-marker w3-hover-text-black" style="width:30px"></i>@ContactsInfo.Value.Address - @ContactsInfo.Value.Cap - @ContactsInfo.Value.City <br>
-                <i class="fa fa-phone w3-hover-text-black" style="width:30px"></i> Phone: @ContactsInfo.Value.Telefono<br>
-                <i class="fa fa-envelope w3-hover-text-black" style="width:30px"> </i> Email: @ContactsInfo.Value.Email<br>
-            </div>
-
-            @* Contact Form *@
-            <form asp-controller="Home" asp-action="SendEmail" method="post" onsubmit="showContactModal()">
-                <div class="row">
-                    <div class="six columns">
-                        <label for="email" style="margin-top: 11px;"> Email</label>
-                    </div>
-                    <input class="u-full-width" name="email" style=" border: 1px solid #bfd3dd;box-shadow: 1px 1px 5px 0px #9E9E9E;" type="email">
+    <div class="relative h-[450px] lg:h-[550px] w-full max-w-5xl mx-auto carousel-container select-none" id="carousel-wrapper">
+        <div class="carousel-inner w-full h-full relative" id="carousel-inner">
+            <div class="carousel-item group" data-index="0">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">cloud_done</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Nexus_Cloud</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Adaptive infrastructure scaling with sub-millisecond propagation latency.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
-                <div class="row">
-                    <div class="six columns">
-                        <label for="request">Message</label>
-                    </div>
-                    <textarea name="request" class="u-full-width lblbox"></textarea>
-                    <input id="submit-button" class="btn-primary" type="submit" value="Submit">
-                </div>
-            </form>
-
-        </div>
-
-    </div>
-    <br />
-</section>
-<section id="spaceBar" style="background: #f9f6f6fa;">
-    <br />
-</section>
-
-<section id="ContactMobile" style="background: #f9f6f6fa;display:none;">
-
-    <div class="container" style="display: flex;flex-direction: column;flex-wrap: nowrap;align-content: center;justify-content: space-evenly;align-items: center;">
-        <h1 style="font-weight: 600;text-transform: uppercase;">@Localizer[MainResource.ContactUs]</h1>
-        <div class="block"></div>
-        <form asp-controller="Home" asp-action="SendEmail" method="post" onsubmit="showContactModal()">
-            <div class="row">
-                <div class="six columns">
-                    <label for="email" style="margin-top: 11px;">Email</label>
-                </div>
-                <input class="u-full-width" name="email" style=" border: 1px solid #bfd3dd;box-shadow: 1px 1px 5px 0px #9E9E9E;" type="email">
             </div>
-            <div class="row">
-                <div class="six columns">
-                    <label for="request">Message</label>
+            <div class="carousel-item group" data-index="1">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">security</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Vault_Secure</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Hardware-isolated encryption modules for sensitive enterprise data assets.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
                 </div>
-                <textarea class="u-full-width" name="request" style=" border: 1px solid #bfd3dd;box-shadow: 1px 1px 5px 0px #9E9E9E;"></textarea>
-                <input id="submit-button" class="btn-primary" type="submit" value="Submit">
             </div>
-        </form>
-
-        <br />
-        <div class="row">
-            <div class="w3-large w3-margin-bottom">
-                <i class="fa fa-map-marker w3-hover-text-black" style="width:30px"></i>@ContactsInfo.Value.Address - @ContactsInfo.Value.Cap - @ContactsInfo.Value.City <br>
-                <i class="fa fa-phone w3-hover-text-black" style="width:30px"></i> Phone: @ContactsInfo.Value.Telefono<br>
-                <i class="fa fa-envelope w3-hover-text-black" style="width:30px"> </i> Email: @ContactsInfo.Value.Email<br>
+            <div class="carousel-item group" data-index="2">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">insights</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Data_Vision</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Predictive modeling utilizing deep-layer recursive neural networks.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
+                </div>
             </div>
-        </div>
-        <br />
-        <div class="row" style="border: 3px solid #607D8B;">
-            <div class="map-responsive">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.4957946249706!2d15.834202912298624!3d40.641000141838866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1338e31862b2b7fb%3A0xf29e8cdc71b253fd!2sGraldev%20S.a.s.%20di%20Omar%20Marino!5e0!3m2!1sit!2sit!4v1695903543919!5m2!1sit!2sit" width="300" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="carousel-item group" data-index="3">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">settings_input_component</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">API_Flow</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Universal connector protocols for legacy-to-future integration chains.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
+                </div>
+            </div>
+            <div class="carousel-item group" data-index="4">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">satellite_alt</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Edge_Sync</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Globally distributed computation nodes for optimized user experience.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
+                </div>
+            </div>
+            <div class="carousel-item group" data-index="5">
+                <div class="glass-card">
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl text-neon-green mb-4 lg:mb-6 group-hover:scale-125 transition-transform duration-500">stream</span>
+                    <h3 class="font-mono text-lg lg:text-xl font-bold mb-2 lg:mb-4 text-white uppercase">Pulse_Stream</h3>
+                    <p class="text-neutral-400 text-xs lg:text-sm font-mono leading-relaxed mb-6 lg:mb-8">Real-time telemetry and monitoring with automated failure recovery.</p>
+                    <button class="mt-auto border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">@Localizer["ViewDetails"]</button>
+                </div>
             </div>
         </div>
     </div>
-
-    <br />
+    <div class="flex justify-center gap-4 mt-4 lg:mt-8">
+        <button class="w-10 h-10 lg:w-12 lg:h-12 border border-neon-green/30 flex items-center justify-center hover:bg-neon-green/10 transition-all text-neon-green" id="prev-btn">
+            <span class="material-symbols-outlined text-sm lg:text-base">arrow_back_ios_new</span>
+        </button>
+        <button class="w-10 h-10 lg:w-12 lg:h-12 border border-neon-green/30 flex items-center justify-center hover:bg-neon-green/10 transition-all text-neon-green" id="next-btn">
+            <span class="material-symbols-outlined text-sm lg:text-base">arrow_forward_ios</span>
+        </button>
+    </div>
 </section>
-<section id="spaceBar" style="background: #f9f6f6fa;">
-</section>
 
-
-
-<!-- Modals Section
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<!-- System Integration -->
-<div class="modal fade" id="system-modal" tabindex="-1" role="dialog" aria-labelledby="systemModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="width:auto;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title"> Systems Integration</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
+<section class="py-20 lg:py-32 px-6 lg:px-12 relative overflow-hidden">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+            <div class="w-full lg:w-1/2">
+                <div class="data-point mb-4 text-neon-green border-l-2 border-neon-green pl-4">@Localizer["WhyChooseUsTag"]</div>
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-8">@Html.Raw(Localizer["WhyChooseUsTitle"].Value)</h2>
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="glass-terminal p-6 border-l-4 border-neon-green">
+                        <h4 class="font-mono text-neon-green mb-2 tracking-widest text-sm lg:text-base">@Localizer["WhyChooseUs1Title"]</h4>
+                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">@Localizer["WhyChooseUs1Text"]</p>
                     </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br/>
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.SysModal)                            
+                    <div class="glass-terminal p-6 border-l-4 border-neutral-600">
+                        <h4 class="font-mono text-neutral-300 mb-2 tracking-widest text-sm lg:text-base">@Localizer["WhyChooseUs2Title"]</h4>
+                        <p class="text-neutral-400 text-xs lg:text-sm font-mono">@Localizer["WhyChooseUs2Text"]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full lg:w-1/2 relative">
+                <div class="monitor-frame aspect-square glass-terminal flex items-center justify-center group max-w-lg mx-auto">
+                    <img alt="3D Component" class="w-full h-full object-cover mix-blend-overlay grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD02fzGWa_TRZ78bDuyyFRkzTrrMSNZDOAftG8d_oiNRCz-KcivUVJP_cs8UmrQE55CQx2_8H0Q25LnT6i3pQTd1-2gQRqFq0DBADQDvqhyrCvK9hRpv2v8gNivndhDXbUkT86Awm7AaO7oaTr3mWkw7Rojlp9TvHu5V1SM5VxNGJurVnVlDqjeao35QBYlWl4OBWCIHvDXEWYyib_qsCSyTavZJWeBnWMZzcbIvI-LgNPo1wDCOp152So1BUinVTHor8Du-4hbJIo" />
+                    <div class="absolute inset-0 border-[10px] lg:border-[20px] border-charcoal/50 pointer-events-none"></div>
+                    <div class="absolute top-4 right-4 data-point">RENDER_LAYER: 0x44F</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 lg:py-32 px-6 lg:px-12 bg-charcoal">
+    <div class="container mx-auto">
+        <div class="mb-16 lg:mb-20 text-center">
+            <div class="data-point mb-2">@Localizer["ManifestTag"]</div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black uppercase tracking-tighter">@Localizer["ManifestTitle"]</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="monitor-frame glass-terminal p-6 lg:p-8 isometric-card">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="material-symbols-outlined text-3xl lg:text-4xl text-neon-green">layers</span>
+                    <div class="data-point">MOD_01</div>
+                </div>
+                <h3 class="font-mono text-lg lg:text-xl font-bold mb-4 text-neon-green uppercase">Systems_Integration</h3>
+                <p class="text-neutral-500 text-xs lg:text-sm font-mono leading-relaxed mb-6">
+                    Unifying disparate silos into a monolithic high-performance neural infrastructure. SAP/Oracle/Sync.
+                </p>
+                <div class="border-t border-neon-green/20 pt-4 flex justify-between items-center">
+                    <div class="data-point">STATUS: READY</div>
+                    <span class="material-symbols-outlined text-sm text-neon-green">terminal</span>
+                </div>
+            </div>
+            <div class="monitor-frame glass-terminal p-6 lg:p-8 isometric-card">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="material-symbols-outlined text-3xl lg:text-4xl text-neon-green">developer_mode_tv</span>
+                    <div class="data-point">MOD_02</div>
+                </div>
+                <h3 class="font-mono text-lg lg:text-xl font-bold mb-4 text-neon-green uppercase">Web_API_Core</h3>
+                <p class="text-neutral-500 text-xs lg:text-sm font-mono leading-relaxed mb-6">
+                    High-throughput GraphQL & REST clusters with auto-scaling endpoint redundancy.
+                </p>
+                <div class="border-t border-neon-green/20 pt-4 flex justify-between items-center">
+                    <div class="data-point">LATENCY: 5MS</div>
+                    <span class="material-symbols-outlined text-sm text-neon-green">wifi_tethering</span>
+                </div>
+            </div>
+            <div class="monitor-frame glass-terminal p-6 lg:p-8 isometric-card">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="material-symbols-outlined text-3xl lg:text-4xl text-neon-green">smart_toy</span>
+                    <div class="data-point">MOD_03</div>
+                </div>
+                <h3 class="font-mono text-lg lg:text-xl font-bold mb-4 text-neon-green uppercase">AI_Integration</h3>
+                <p class="text-neutral-500 text-xs lg:text-sm font-mono leading-relaxed mb-6">
+                    Neural net deployment within existing business workflows for automated decision logic.
+                </p>
+                <div class="border-t border-neon-green/20 pt-4 flex justify-between items-center">
+                    <div class="data-point">MODEL: LLM_v4</div>
+                    <span class="material-symbols-outlined text-sm text-neon-green">memory</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEW PARTNER SECTION -->
+<section class="py-24 relative overflow-hidden bg-black/40 border-y border-neon-green/10">
+    <div class="absolute inset-0 opacity-10 animate-pulse-slow pointer-events-none">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #37D28A 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <div class="data-point mb-4">@Localizer["NodesTag"]</div>
+            <h2 class="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase mb-4">@Html.Raw(Localizer["NodesTitle"].Value)</h2>
+            <div class="h-0.5 w-24 bg-neon-green/30 mx-auto"></div>
+        </div>
+        <div class="relative w-full overflow-hidden group">
+            <div class="flex whitespace-nowrap animate-scroll gap-12 lg:gap-24 items-center py-8">
+                <!-- Set 1 -->
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
+                </div>
+                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
+                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
+                </div>
+            </div>
+            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-charcoal to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-charcoal to-transparent z-10 pointer-events-none"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 lg:py-32 px-6 lg:px-12">
+    <div class="container mx-auto">
+        <div class="monitor-frame glass-terminal max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="p-6 lg:p-10 border-b md:border-b-0 md:border-r border-neon-green/10">
+                    <div class="data-point mb-6">@Localizer["ContactTag"]</div>
+                    <h2 class="text-3xl lg:text-4xl font-display font-bold mb-8">@Localizer["ContactTitle"]</h2>
+                    <form asp-controller="Home" asp-action="SendEmail" method="post" id="contactForm" class="space-y-6">
+                        @Html.AntiForgeryToken()
+                        <div>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormOrg"]</label>
+                            <input class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="ROOT@COMPANY" type="text" name="orgName" />
                         </div>
-                        @*<p id="modalInfoMessage">@Html.Raw(ClientsResource.SystemIntegrationClient)</p>*@
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Mobile Apps & Videogames  -->
-<div class="modal fade" id="app-modal" tabindex="-1" role="dialog" aria-labelledby="appModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">  Mobile Apps & Videogames</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br />
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.AppsModal)
+                        <div>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormEmail"]</label>
+                            <input class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="ADMIN@NETWORK" type="email" name="email" required />
                         </div>
-                    </div>
-
+                        <div>
+                            <label class="font-mono text-[10px] lg:text-xs uppercase text-neon-green mb-2 block">@Localizer["FormPayload"]</label>
+                            <textarea class="w-full bg-black/40 border border-neutral-700 font-mono text-sm p-3 focus:border-neon-green outline-none text-neon-green placeholder:text-neutral-700" placeholder="DESCRIBE INTEGRATION PARAMETERS..." rows="4" name="request" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full border-2 border-neon-green py-4 font-mono font-bold text-neon-green hover:bg-neon-green hover:text-charcoal transition-all">
+                            @Localizer["FormSubmit"]
+                        </button>
+                    </form>
+                    <div id="formResponse" class="mt-4 font-mono text-xs"></div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Amazon & Ebay WebAPI  -->
-<div class="modal fade" id="api-modal" tabindex="-1" role="dialog" aria-labelledby="apiModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Amazon , eBay & Shopify  WebAPI</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br />
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.CartModal)
+                <div class="relative bg-neutral-900 overflow-hidden min-h-[300px]">
+                    <img alt="Map Visualization" class="w-full h-full object-cover opacity-30 grayscale sepia hue-rotate-[80deg] saturate-[2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_tZHepD0uhzq_aVxslFV1ug16edQDuNaP4QhxBAyRONC8xOIL7HAYirlB71D5IqaUvJA8cIYfKIFDw7aOYxTMyCVKrOurVWS73UR7emTi1m29c6JEmubXWHEy0Ri-bQIIPRYMls5toG0BUfYr17iftEnOzk2_fdEeOC2IAXwCleJaK-bo5CiLWLxLI6rYQhskoA4TxGmRzyRLvg6hPNdDTKIak9Cf333ovIrpZBZDmWFgHwQAmrLmBEot0D1nGw7RUv-fmOeIQ84" />
+                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at center, transparent, #0a0a0c);"></div>
+                    <div class="absolute bottom-6 left-6 border-l-2 border-neon-green pl-4 bg-charcoal/80 p-4 backdrop-blur-sm">
+                        <div class="data-point">@Localizer["Geolocation"]</div>
+                        <div class="font-mono text-xs lg:text-sm mt-1">@Localizer["HQ"]</div>
+                        <div class="flex items-center gap-2 mt-3">
+                            <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
+                            <span class="data-point text-neon-green">@Localizer["StatusActive"]</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Supporto e Consulenza IT - TLC  -->
-<div class="modal fade" id="tlc-modal" tabindex="-1" role="dialog" aria-labelledby="tlcModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Html.Raw(ClientsResource.TlcclientTitle)</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br />
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.SupportModal)
-                            @* icon list :
-                            <i class="fa-solid fa-headset"style="color: #37d28a;" ></i>
-                            *@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('carousel-wrapper');
+            const inner = document.getElementById('carousel-inner');
+            const items = document.querySelectorAll('.carousel-item');
+            const count = items.length;
 
-<!-- Software Gestionali -->
-<div class="modal fade" id="mana-modal" tabindex="-1" role="dialog" aria-labelledby="manaModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Localizer[ClientsResource.GestClientTitle]</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br />
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.GestModal)
-                            @* icon list :
-                            <i class="fa-solid fa-gear"style="color: #37d28a;"></i>
-                            *@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
+            let rotation = 0;
+            let isDragging = false;
+            let startX = 0;
+            let currentRotation = 0;
+            let autoPlayInterval;
 
-<!-- Ar App & 3D Modeling -->
-<div class="modal fade" id="ar-modal" tabindex="-1" role="dialog" aria-labelledby="arModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Ar App & 3D Modeling</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <br />
-                        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; color: #333;">
-                            <br />
-                            @Html.Raw(ClientsResource.ARModal)
-                            @* icon list :
-                            <i class="fa-solid fa-gear"style="color: #37d28a;"></i>
-                            *@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
+            function getRadius() {
+                return window.innerWidth < 768 ? 200 : 380;
+            }
 
-<!-- AI Content Creation -->
-<div class="modal fade" id="mark-modal" tabindex="-1" role="dialog" aria-labelledby="markModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Localizer[MainResource.AI_Content_title]</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <p id="modalInfoMessage">@Html.Raw(MainResource.AI_ContentDescription)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
+            const getSpiralFactor = () => window.innerWidth < 768 ? 30 : 45;
 
-<!-- AI Integration and Development -->
-<div class="modal fade" id="social-modal" tabindex="-1" role="dialog" aria-labelledby="socialModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">@Localizer[MainResource.AI_API]</h5>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <!-- Image on top -->
-                        <img id="modalInfoImage" src="" class="img-fluid" alt="Image">
-                    </div>
-                    <div class="row">
-                        <!-- Text on bottom -->
-                        <p id="modalInfoMessage">@Html.Raw(MainResource.AI_API_Description)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="modal-btn btn btn-primary">@Localizer[Message.Contattaci]</button>
-            </div>
-        </div>
-    </div>
-</div>
+            function updateCarousel() {
+                const radius = getRadius();
+                const spiralFactor = getSpiralFactor();
+
+                items.forEach((item, i) => {
+                    const angle = (i * (360 / count)) + rotation;
+                    const rad = angle * (Math.PI / 180);
+
+                    const x = Math.sin(rad) * radius;
+                    const z = Math.cos(rad) * radius;
+                    const y = Math.sin(rad) * spiralFactor;
+
+                    const cardRotation = angle;
+                    const normalizedZ = (z + radius) / (2 * radius);
+
+                    const scale = 0.45 + (normalizedZ * 0.55);
+                    const opacity = 0.15 + (normalizedZ * 0.85);
+                    const blur = (1 - normalizedZ) * 6;
+
+                    item.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${cardRotation}deg) scale(${scale})`;
+                    item.style.opacity = opacity;
+                    item.style.filter = `blur(${blur}px)`;
+                    item.style.zIndex = Math.round(z + radius);
+
+                    if (z > radius * 0.85) {
+                        item.classList.add('active');
+                        item.style.filter = 'blur(0px)';
+                        item.style.opacity = '1';
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            }
+
+            function rotate(delta) {
+                rotation += delta;
+                updateCarousel();
+            }
+
+            container.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                currentRotation = rotation;
+                clearInterval(autoPlayInterval);
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                rotation = currentRotation + (deltaX * 0.25);
+                updateCarousel();
+            });
+
+            window.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    startAutoPlay();
+                }
+            });
+
+            container.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                currentRotation = rotation;
+                clearInterval(autoPlayInterval);
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                rotation = currentRotation + (deltaX * 0.25);
+                updateCarousel();
+            });
+
+            container.addEventListener('touchend', () => {
+                isDragging = false;
+                startAutoPlay();
+            });
+
+            document.getElementById('prev-btn').onclick = () => {
+                clearInterval(autoPlayInterval);
+                rotate(360/count);
+                startAutoPlay();
+            };
+            document.getElementById('next-btn').onclick = () => {
+                clearInterval(autoPlayInterval);
+                rotate(-360/count);
+                startAutoPlay();
+            };
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') rotate(15);
+                if (e.key === 'ArrowRight') rotate(-15);
+            });
+
+            function startAutoPlay() {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    rotate(-0.15);
+                }, 30);
+            }
+
+            updateCarousel();
+            startAutoPlay();
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    updateCarousel();
+                }, 200);
+            });
+
+            // AJAX Form Submission
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+                const form = $(this);
+                const responseDiv = $('#formResponse');
+                responseDiv.text('> SENDING_PAYLOAD...');
+
+                // Combine orgName and request
+                const orgName = form.find('input[name="orgName"]').val();
+                const originalRequest = form.find('textarea[name="request"]').val();
+                const combinedRequest = `Organization: ${orgName}\n\n${originalRequest}`;
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    headers: {
+                        "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    data: {
+                        email: form.find('input[name="email"]').val(),
+                        request: combinedRequest
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            responseDiv.addClass('text-neon-green').removeClass('text-red-500').text('> HANDSHAKE_COMPLETE: SUCCESS');
+                            form[0].reset();
+                        } else {
+                            responseDiv.addClass('text-red-500').removeClass('text-neon-green').text('> ERROR: ' + response.message);
+                        }
+                    },
+                    error: function () {
+                        responseDiv.addClass('text-red-500').removeClass('text-neon-green').text('> SYSTEM_FAILURE: UNABLE_TO_REACH_ENDPOINT');
+                    }
+                });
+            });
+        });
+    </script>
+}

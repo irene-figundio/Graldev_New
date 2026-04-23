@@ -1,49 +1,825 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@using WebSite.Resources
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+@{
+    string? urlPolicy = Url.ActionLink("Privacy", "Home");
+}
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebSite</title>
+    <title>Graldev S.a.s</title>
+    <!-- Favicon -->
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
+    <!-- # Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebSite.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
+    <link href="~/css/lightbox.css" rel="stylesheet" asp-append-version="true" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14P8MT13VP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-14P8MT13VP');
+    </script>
+    @RenderSection("styleImport", required: false)
+    @RenderSection("Style", required: false)
 </head>
 <body>
-    <header>
+
+    <header class="nav-down" id="header">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebSite</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                        aria-expanded="false" aria-label="Toggle navigation" style=" margin-right: 5px;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul id="desktopNav" class="navbar-nav flex-grow-1" style="justify-content: space-evenly;flex-direction: row;align-items: center;">
+
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/asset/img/logo_ico.png" style="height: 80px;" />
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" href="https://www.graldevstudios.com/" target="_blank" style="animation : animate 3s linear infinite alternate-reverse;">
+                                GraldevStudios
+
+                                </a>
+                        </li>
+                        @* <li class="nav-item">
+                            <a class="text-dark nav-link " asp-area="" asp-controller="Home" asp-action="CicDetails">
+                                ConsulenzeInCloud
+                            </a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#about">@Localizer[MainResource.AboutUs] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#ContactDesktop">@Localizer[MainResource.ContactUs] </a>
+                        </li>
+                    </ul>
+                    <ul id="mobileNav" class="navbar-nav flex-grow-1" style="display:none;justify-content: space-evenly;flex-direction: column;">
+
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="~/asset/img/logo_ico.png" style="width: 50px;height: 70px;margin-left: 15px;margin-bottom: -30px;/* margin: -5px; */padding-inline: 2px;" />
+                            </a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link  text-dark" href="https://www.graldevstudios.com/" target="_blank" style="animation : animate 3s linear infinite alternate-reverse;">
+                                GraldevStudios
+
+                            </a>
+                        </li>
+                        @* <li class="nav-item">
+                            <a class="text-dark nav-link" asp-area="" asp-controller="Home" asp-action="CicDetails">
+                                ConsulenzeInCloud
+                            </a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#about">@Localizer[MainResource.AboutUs] </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#ContactMobile">@Localizer[MainResource.ContactUs] </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WebSite - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    @RenderBody()
+
+    <button onclick="goToTop()" id="goToTopBtn" title="Go to top">&#8679;</button>
+
+    <div class="cookies-banner-container" role="region" aria-label="Cookies banner">
+        <div id="cookieBannerDesktop" class="cookies-banner" role="alert">
+            <div class="cookies-banner__icon" role="img" aria-label="Cookie icon" style="padding: 10px; align-items:center;margin-left: 10px;">
+                <img src="https://img.icons8.com/offices/100/000000/cookies.png" alt="" aria-hidden="true" style="width:45px;" />
+            </div>
+            <div class="cookies-banner__info-text" style="padding: 10px;margin-right: 10px;">
+
+               <div style="padding: 10px;" font face="Arial, Helvetica, sans-serif">
+                @Localizer[@CookiesResource.CookieBannerInfo] <a id="view-policy" href="/Home/Privacy"> @Localizer[@CookiesResource.ClickHere]</a>
+                    <br />
+                @Localizer[@CookiesResource.CookieBannerWarning]
+
+                </div>
+            </div>
+            <div class="cookies-banner__accept-btn" style="padding: 10px;">
+            <button role="button" aria-label="Accept cookies">@Localizer[@CookiesResource.Accept]</button>
+            </div>
+        </div>
+    </div>
+    <footer id="footerSection">
+        <div id="mobilefooter" style="display: none;flex-wrap: nowrap;justify-content: center;flex-direction: row;align-content: space-between;">
+            <div class="container">
+                <div class="row justify-content-center" id="footerCont">
+                    <div class="col-md-6" style="flex: 0 0 auto;">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">
+                                    <img class="logo-footer" src="~/asset/img/logo_ico.png" style="margin-top:10px;" />
+                                </a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            @*<li >
+                            <a href="https://www.instagram.com/graldevstudios/" target="_blank" style=" text-decoration:none !important;">@MainResource.ContactUs</a>
+                            <br />
+                            </li>
+                            *@
+                            <li>
+                                <a href="https://www.facebook.com/graldev" target="_blank">
+                                    <div class="socialsy bgli">
+                                        <i class="fa fa-facebook" style="margin-top: 3.5px;margin-left: 7px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/graldev?utm_source=ig_web_button_share_sheet&igsh=MzhqN3Q0d21peWR1" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-instagram" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+
+                            <li>
+                                <a href="https://www.linkedin.com/company/graldev/posts" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-linkedin-in" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+                                <br />
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="row col-md-6" style="flex: 0 0 auto;">
+                    <ul style="list-style: none;">
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a href="/Home/Privacy" target="_blank" style="margin-left: 12px; text-decoration:none !important;font-size: 0.8rem;">Privacy & Cookies</a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT">
+                                <h6 style="font-size: 0.8rem;">IT</h6>
+                            </a>
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN">
+                                <h6 style="font-size: 0.8rem;">EN</h6>
+                            </a>
+
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <br />
+                        </li>
+                        <li>
+                            <p style="font-size: 0.8rem;text-align: center;color: #adb5bdbf;">
+                                Graldev S.a.S. di Chiera Luigi - P.I. 01986670766
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="desktopfooter" style="display: flex;flex-wrap: nowrap;justify-content: center;flex-direction: row;align-content: space-between;">
+            <div class="container">
+                <div class="row justify-content-center" id="footerContDesktop">
+                    <div class="col-md-4" style="flex: 0 0 auto;">
+                        <ul style="list-style: none;">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">
+                                    <img class="logo-footer" src="~/asset/img/logo_ico.png" style="margin-top:10px;" />
+                                </a>
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/graldev" target="_blank">
+                                    <div class="socialsy bgli">
+                                        <i class="fa fa-facebook" style="margin-top: 3.5px;margin-left: 7px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/graldev?utm_source=ig_web_button_share_sheet&igsh=MzhqN3Q0d21peWR1" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-instagram" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+
+                                <br />
+                            </li>
+
+                            <li>
+                                <a href="https://www.linkedin.com/company/graldev/posts" target="_blank">
+                                    <div class="socialsy bgli">
+
+                                        <i class="fa-brands fa-linkedin-in" style="margin-top: 4px;margin-left: 6.5px;transform: rotateZ(45deg);color: #f7f7f7;font-size: 16px;"></i>
+
+                                    </div>
+                                </a>
+                                <br />
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <div class="col-md-4">
+                        <p style="font-size: 0.8rem;text-align: center;color: #adb5bdbf;">
+                            Graldev S.a.S. di Chiera Luigi - P.I. 01986670766
+                        </p>
+                    </div>
+                    <div class="col-md-4" style="flex: 0 0 auto;margin-top:1.5rem">
+
+                            <ul style="list-style: none;">
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <a href="/Home/Privacy" target="_blank" style="margin-left: 12px; text-decoration:none !important;font-size: 0.8rem;">Privacy & Cookies</a>
+                                </li>
+
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT">
+                                        <h6 style="font-size: 0.8rem;">IT</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN">
+                                        <h6 style="font-size: 0.8rem;">EN</h6>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                                <li>
+                                    <br />
+                                </li>
+                            </ul>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </footer>
+
+    @RenderSection("scripts", required: false)
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!-- Main Script -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/2b70580465.js" crossorigin="anonymous" asp-append-version="true"></script>
+    <script src="~/js/lightbox.js" asp-append-version="true"></script>
+
+   <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('form').submit(function (e) {
+                e.preventDefault(); // Prevent form submission
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            $('#success-box').modal('show');
+                            $('form')[0].reset(); // Reset form fields
+                            $('#closeSuccessModal').click(function () {
+                                $('#success-box').modal('hide');
+                            });
+                        } else {
+                           // $('#error-box').find('.modal-body').text(response.message);
+                            $('#error-box').find('#modalMessage').text(response.message);
+                            $('#error-box').modal('show');
+                            $('#closeErrorModal').click(function () {
+                                $('#error-box').modal('hide');
+                            });
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Handle AJAX error
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+            function updateContactLink() {
+                var targetSectionId;
+                if ($(window).width() <= 908) {
+                    targetSectionId = '#ContactMobile';
+                } else {
+                    targetSectionId = '#ContactDesktop';
+                }
+                $('#contactLink').attr('href', targetSectionId);
+            }
+
+            // Call the function initially
+            updateContactLink();
+
+            // Call the function whenever the window is resized
+            $(window).resize(function () {
+                updateContactLink();
+            });
+
+        });
+        function openModal(title, image) {
+            switch (title) {
+              case "System":
+                 $('#system-modal').find('#modalInfoImage').attr('src', image);
+                        $('#system-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        $('#system-modal').modal('hide');
+                     });
+                break;
+              case "App":
+                 $('#app-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#app-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                            $('#app-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+            case "Api":
+                $('#api-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                $('#api-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                    $('#api-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                });
+             break;
+                 case "Tlc":
+                 $('#tlc-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#tlc-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                             $('#tlc-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+                 case "Mana":
+                 $('#mana-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#mana-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                            $('#mana-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+                 case "AR":
+                 $('#ar-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#ar-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                            $('#ar-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+                 case "Mark":
+                 $('#mark-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#mark-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                            $('#mark-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+                case "Social":
+                 $('#social-modal').find('#modalInfoImage').attr('src', image); // Corrected line
+                        $('#social-modal').modal('show');
+                    $('.modal-btn').click(function () {
+                            $('#social-modal').modal('hide');
+                        // Determine which section to scroll to based on screen size or other conditions
+                        if ($(window).width() <= 908) {
+                            targetSectionId = 'ContactMobile';
+                        } else {
+                            targetSectionId = 'ContactDesktop';
+                        }
+
+                        // Scroll to the target section
+                        $('html, body').animate({
+                            scrollTop: $('#' + targetSectionId).offset().top
+                        }, 100);
+                        });
+                break;
+              default:
+                // Code block executed if expression does not match any case
+            }
+
+
+        }
+        function goToTop() {
+            // Get the position of the target section
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        }
+        // Show or hide the button based on scroll position
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("goToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("goToTopBtn").style.display = "none";
+            }
+        }
+
+
+        function handleCookiesBanner() {
+            const cookiesBanner = $(".cookies-banner-container");
+            const acceptedCookies = getCookie("accepted_cookies");
+            const policyUrl = "@urlPolicy";
+            const policyText = "Term and Privacy Policy";
+
+            if (!acceptedCookies) {
+                const acceptBtn = cookiesBanner.find(".cookies-banner__accept-btn button");
+                acceptBtn.on("click", function () {
+                    setCookie("accepted_cookies", "true", 20);
+                    cookiesBanner
+                        .css("transform", "translateY(100%)")
+                        .one("transitionend", function () {
+                            $(this).remove();
+                        });
+                });
+                cookiesBanner.show();
+
+                const cookiesPolicyLink = $(".cookies-banner__terms-and-policy");
+                cookiesPolicyLink.attr("href", policyUrl);
+                cookiesPolicyLink.text(policyText);
+            } else {
+                cookiesBanner.remove();
+            }
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                    expires = "; expires=" + date.toUTCString();
+                }
+
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            function getCookie(name) {
+                const cookieValue = document.cookie.match(
+                    "(^|;)\\s*" + name + "\\s*=\\s*([^;]+)"
+                );
+                return cookieValue ? cookieValue.pop() : null;
+            }
+        }
+        $(handleCookiesBanner);
+
+            function fade($ele) {
+                $ele.fadeIn(1000).delay(3000).fadeOut(1000, function () {
+                    var $next = $(this).next('.quote');
+                    fade($next.length > 0 ? $next : $(this).parent().children().first());
+                });
+            }
+             fade($('.quoteLoop > .quote').first());
+
+        // Smooth Scroll on anchor links
+        (function () {
+
+            'use strict';
+
+            // Feature Test
+            if ('querySelector' in document && 'addEventListener' in window && Array.prototype.forEach) {
+
+                // Function to animate the scroll
+                var smoothScroll = function (anchor, duration) {
+
+                    // Calculate how far and how fast to scroll
+                    var startLocation = window.pageYOffset;
+                    var endLocation = anchor.offsetTop;
+                    var distance = endLocation - startLocation;
+                    var increments = distance / (duration / 16);
+                    var stopAnimation;
+
+                    // Scroll the page by an increment, and check if it's time to stop
+                    var animateScroll = function () {
+                        window.scrollBy(0, increments);
+                        stopAnimation();
+                    };
+
+                    // If scrolling down
+                    if (increments >= 0) {
+                        // Stop animation when you reach the anchor OR the bottom of the page
+                        stopAnimation = function () {
+                            var travelled = window.pageYOffset;
+                            if ((travelled >= (endLocation - increments)) || ((window.innerHeight + travelled) >= document.body.offsetHeight)) {
+                                clearInterval(runAnimation);
+                            }
+                        };
+                    }
+                    // If scrolling up
+                    else {
+                        // Stop animation when you reach the anchor OR the top of the page
+                        stopAnimation = function () {
+                            var travelled = window.pageYOffset;
+                            if (travelled <= (endLocation || 0)) {
+                                clearInterval(runAnimation);
+                            }
+                        };
+                    }
+
+                    // Loop the animation function
+                    var runAnimation = setInterval(animateScroll, 16);
+
+                };
+
+                // Define smooth scroll links
+                var scrollToggle = document.querySelectorAll('.scroll');
+
+                // For each smooth scroll link
+                [].forEach.call(scrollToggle, function (toggle) {
+
+                    // When the smooth scroll link is clicked
+                    toggle.addEventListener('click', function (e) {
+
+                        // Prevent the default link behavior
+                        e.preventDefault();
+
+                        // Get anchor link and calculate distance from the top
+                        var dataID = toggle.getAttribute('href');
+                        var dataTarget = document.querySelector(dataID);
+                        var dataSpeed = toggle.getAttribute('data-speed');
+
+                        // If the anchor exists
+                        if (dataTarget) {
+                            // Scroll to the anchor
+                            smoothScroll(dataTarget, dataSpeed || 500);
+                        }
+
+                    }, false);
+
+                });
+
+            }
+
+        })();
+
+        //Smooth Scroll
+        SmoothScroll({
+            // Scrolling Core
+            animationTime: 400, // [ms]
+            stepSize: 100, // [px]
+
+            // Acceleration
+            accelerationDelta: 50,  // 50
+            accelerationMax: 3,   // 3
+
+            // Keyboard Settings
+            keyboardSupport: true,  // option
+            arrowScroll: 50,    // [px]
+
+            // Pulse (less tweakable)
+            // ratio of "tail" to "acceleration"
+            pulseAlgorithm: true,
+            pulseScale: 4,
+            pulseNormalize: 1,
+
+            // Other
+            touchpadSupport: false, // ignore touchpad by default
+            fixedBackground: true,
+            excluded: ''
+        });
+
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+
+                var forms = document.getElementsByClassName('needs-validation');
+
+                var Validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() == false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+
+            }, false);
+        }());
+
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices': true,
+            'fitImagesInViewport': true
+        });
+       @RenderSection("scriptsInit", required: false)
+    </script>
+
 </body>
 </html>

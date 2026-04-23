@@ -1,47 +1,53 @@
-﻿@using WebSite.Resources;
+@using WebSite.Resources;
 @{
     ViewData["Title"] = "Privacy Policy";
-    Layout = null;
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
 }
-<!DOCTYPE html>
-<html lang="it">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy</title>
-    <!-- Favicon -->
-    <link rel="icon" href="~/logo.ico" type="image/x-icon">
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <!-- <link rel="stylesheet" href="~/StudiosWeb.styles.css" asp-append-version="true" /> -->
-    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-14P8MT13VP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+<section class="py-20 lg:py-32 px-6 lg:px-12 relative overflow-hidden min-h-screen">
+    <div class="container mx-auto">
+        <div class="monitor-frame glass-terminal max-w-5xl mx-auto p-6 lg:p-10">
+            <div class="flex items-center gap-4 mb-8 border-b border-neon-green/20 pb-4">
+                <div class="flex gap-1.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="data-point">SEC_PROTOCOL // PRIVACY_MANIFEST</div>
+            </div>
 
-        gtag('config', 'G-14P8MT13VP');
-    </script>
-</head>
+            <h1 class="text-4xl md:text-5xl font-display font-black uppercase tracking-tighter mb-8">
+                Privacy <span class="text-neon-green">Protocols</span>
+            </h1>
 
-<body>
-    <div class="main-content">
-        <h2>@CookiesResource.PrivacySubTitle</h2><br />
-        <p>
-            <b>@CookiesResource.PrivacyPolicyTitle</b> <br /><br />
-            @Html.Raw(@CookiesResource.PolicyIntro)
-            @Html.Raw(@CookiesResource.PolicyData)
-            @Html.Raw(@CookiesResource.PolicyCookies)
-        </p>
+            <div class="space-y-8 font-mono text-sm lg:text-base text-neutral-400 leading-relaxed">
+                <div class="glass-terminal p-6 border-l-4 border-neon-green">
+                    <h2 class="text-neon-green mb-4 uppercase tracking-widest font-bold">@CookiesResource.PrivacySubTitle</h2>
+                    <p class="mb-4 font-bold text-white uppercase">@CookiesResource.PrivacyPolicyTitle</p>
+                    <div class="space-y-4 prose prose-invert max-w-none">
+                        @Html.Raw(@CookiesResource.PolicyIntro)
+                    </div>
+                </div>
 
+                <div class="glass-terminal p-6 border-l-4 border-neutral-600">
+                    <div class="space-y-4 prose prose-invert max-w-none">
+                        @Html.Raw(@CookiesResource.PolicyData)
+                    </div>
+                </div>
+
+                <div class="glass-terminal p-6 border-l-4 border-neutral-800">
+                    <div class="space-y-4 prose prose-invert max-w-none">
+                        @Html.Raw(@CookiesResource.PolicyCookies)
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 flex justify-between items-center border-t border-neon-green/10 pt-6">
+                <div class="data-point">ENCRYPTION: AES-256-GCM</div>
+                <a asp-action="Index" class="border border-neon-green/40 px-6 py-2 text-[10px] font-mono text-neon-green hover:bg-neon-green hover:text-charcoal transition-all uppercase">
+                    RETURN_TO_CORE.EXE
+                </a>
+            </div>
+        </div>
     </div>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</body>
-</html>
+</section>

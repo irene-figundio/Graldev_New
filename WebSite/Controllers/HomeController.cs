@@ -47,6 +47,7 @@ namespace WebSite.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SendEmail(string email, string request)
         {
             if (string.IsNullOrEmpty(email))

@@ -1,0 +1,344 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using WebSite.Resources
+@inject IViewLocalizer Localizer
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GRALDEV | Enterprise Systems</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "charcoal": "#0a0a0c",
+                        "neon-green": "#37D28A",
+                        "blueprint-grid": "rgba(55, 210, 138, 0.08)",
+                        "terminal-glass": "rgba(10, 10, 12, 0.6)",
+                    },
+                    fontFamily: {
+                        "mono": ["JetBrains Mono", "monospace"],
+                        "display": ["Space Grotesk", "sans-serif"],
+                    },
+                    animation: {
+                        'scroll': 'scroll 30s linear infinite',
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @@layer base {
+            body {
+                @@apply bg-charcoal text-white font-display overflow-x-hidden;
+                background-image:
+                    linear-gradient(to right, rgba(55, 210, 138, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(55, 210, 138, 0.05) 1px, transparent 1px);
+                background-size: 50px 50px;
+            }
+        }
+        .glass-terminal {
+            @@apply backdrop-blur-xl border border-neon-green/20 bg-neutral-900/40;
+            box-shadow: 0 0 20px rgba(55, 210, 138, 0.05), inset 0 0 20px rgba(55, 210, 138, 0.02);
+        }
+        .monitor-frame {
+            @@apply relative overflow-hidden rounded-sm border-2 border-neutral-700/50;
+            box-shadow: 0 0 0 4px #1a1a1c, 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .monitor-frame::before {
+            content: '';
+            @@apply absolute inset-0 pointer-events-none z-20;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+        }
+        .green-text-glow {
+            text-shadow: 0 0 10px rgba(55, 210, 138, 0.5);
+        }
+        .isometric-card {
+            @@apply transition-all duration-500;
+            transform: perspective(1000px) rotateX(10deg) rotateY(-5deg);
+        }
+        @@media (min-width: 1024px) {
+            .isometric-card:hover {
+                transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-10px);
+                @@apply border-neon-green/50;
+            }
+        }
+        .side-nav {
+            @@apply fixed bottom-0 left-0 right-0 h-16 w-full lg:w-20 lg:h-screen lg:top-0 lg:bottom-0 flex lg:flex-col items-center justify-around lg:justify-start lg:py-10 z-[100] border-t lg:border-t-0 lg:border-r border-neon-green/10 bg-charcoal/90 backdrop-blur-md;
+        }
+        .data-point {
+            @@apply font-mono text-[10px] uppercase tracking-tighter text-neon-green/60;
+        }
+
+        /* 3D Carousel Custom Styles */
+        .carousel-container {
+            perspective: 2000px;
+            transform-style: preserve-3d;
+            cursor: grab;
+            @@apply transition-all duration-300;
+        }
+        .carousel-container:active {
+            cursor: grabbing;
+        }
+        .carousel-inner {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+        }
+        .carousel-item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -120px; /* half of width */
+            margin-top: -160px; /* half of height */
+            width: 240px;
+            height: 320px;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            transition: opacity 0.5s, filter 0.5s, box-shadow 0.3s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        @@media (max-width: 640px) {
+            .carousel-item {
+                width: 200px;
+                height: 280px;
+                margin-left: -100px;
+                margin-top: -140px;
+            }
+        }
+        .carousel-item.active {
+            filter: drop-shadow(0 0 30px rgba(55, 210, 138, 0.4));
+        }
+        .glass-card {
+            @@apply w-full h-full p-6 lg:p-8 flex flex-col items-center text-center justify-center border border-white/10 backdrop-blur-2xl bg-charcoal/40 rounded-xl overflow-hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .spiral-bg {
+            background: radial-gradient(circle at center, rgba(55, 210, 138, 0.1) 0%, transparent 70%);
+        }
+
+        .glitch-hover:hover {
+            animation: glitch-anim 0.3s infinite;
+        }
+        @@keyframes glitch-anim {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+        .hologram-logo {
+            filter: drop-shadow(0 0 8px rgba(55, 210, 138, 0.8));
+            @@apply opacity-70 hover:opacity-100 transition-opacity;
+        }
+    </style>
+    <style>
+        #back-to-top {
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        .text-neon-green { color: #37D28A; }
+        .border-neon-green { border-color: #37D28A; }
+    </style>
+    @RenderSection("Style", required: false)
+</head>
+<body class="selection:bg-neon-green selection:text-charcoal pb-16 lg:pb-0">
+    <nav class="side-nav">
+        <div class="lg:mb-12 flex items-center justify-center">
+            <div class="w-8 h-8 lg:w-10 lg:h-10 border border-neon-green flex items-center justify-center rotate-45 group hover:rotate-90 transition-transform cursor-pointer">
+                <span class="material-symbols-outlined -rotate-45 text-neon-green group-hover:scale-110 text-xl lg:text-2xl">grid_view</span>
+            </div>
+        </div>
+        <div class="lg:flex-1 flex lg:flex-col gap-8 lg:gap-10">
+            <a class="group relative" href="#">
+                <span class="material-symbols-outlined text-neutral-500 group-hover:text-neon-green transition-colors">dns</span>
+                <span class="hidden lg:block absolute left-16 top-1/2 -translate-y-1/2 px-2 py-1 bg-neon-green text-charcoal text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">INFRA</span>
+            </a>
+            <a class="group relative" href="#">
+                <span class="material-symbols-outlined text-neutral-500 group-hover:text-neon-green transition-colors">hub</span>
+                <span class="hidden lg:block absolute left-16 top-1/2 -translate-y-1/2 px-2 py-1 bg-neon-green text-charcoal text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">SYNC</span>
+            </a>
+            <a class="group relative" href="#">
+                <span class="material-symbols-outlined text-neutral-500 group-hover:text-neon-green transition-colors">terminal</span>
+                <span class="hidden lg:block absolute left-16 top-1/2 -translate-y-1/2 px-2 py-1 bg-neon-green text-charcoal text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">CORE</span>
+            </a>
+        </div>
+        <div class="lg:mt-auto flex flex-col items-center justify-center gap-4 mb-4">
+            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">IT</a>
+            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">EN</a>
+            <button class="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-neon-green transition-colors">
+                <span class="material-symbols-outlined text-xs">power_settings_new</span>
+            </button>
+        </div>
+    </nav>
+    <main class="lg:ml-20 overflow-x-hidden">
+        @RenderBody()
+        <footer class="py-12 px-6 lg:px-12 border-t border-neon-green/10 bg-black">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+                <div>
+                    <div class="text-xl lg:text-2xl font-display font-black tracking-tighter mb-2">GRAL<span class="text-neon-green">DEV</span></div>
+                    <div class="data-point">© 2024 SYSTEM_CORE_INTEGRATION</div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-4 lg:gap-8 font-mono text-[10px] lg:text-[11px] uppercase tracking-widest text-neutral-500">
+                    <a class="hover:text-neon-green transition-colors" asp-controller="Home" asp-action="Privacy">@Localizer["PrivacyProtocols"]</a>
+                    <a class="hover:text-neon-green transition-colors" href="#">@Localizer["TermParameters"]</a>
+                    <a class="hover:text-neon-green transition-colors text-neon-green" href="#">@Localizer["SysStatus"]</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Matrix Rain Overlay -->
+    <div class="fixed inset-0 z-[200] bg-black opacity-0 pointer-events-none transition-opacity duration-500" id="matrix-overlay">
+        <canvas class="w-full h-full" id="matrix-canvas"></canvas>
+    </div>
+    <!-- Back to Top Button -->
+    <button class="fixed bottom-8 right-8 z-[150] w-14 h-14 rounded-full glass-terminal border-2 border-neon-green shadow-[0_0_15px_rgba(55,210,138,0.4)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all group" id="back-to-top">
+        <span class="material-symbols-outlined text-neon-green group-hover:text-neon-green/80 text-2xl">code</span>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+    <script>
+        (function() {
+            const btn = document.getElementById('back-to-top');
+            const overlay = document.getElementById('matrix-overlay');
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let animationFrame;
+
+            function initMatrix() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゾドボポヴッン';
+                const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const nums = '0123456789';
+                const alphabet = katakana + latin + nums;
+
+                const fontSize = 16;
+                const columns = canvas.width / fontSize;
+                const rainDrops = Array.from({ length: columns }).fill(1);
+
+                function draw() {
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.fillStyle = '#37D28A'; // Use neon-green for matrix
+                    ctx.font = fontSize + 'px monospace';
+
+                    for (let i = 0; i < rainDrops.length; i++) {
+                        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                            rainDrops[i] = 0;
+                        }
+                        rainDrops[i]++;
+                    }
+                    animationFrame = requestAnimationFrame(draw);
+                }
+                draw();
+            }
+
+            btn.addEventListener('click', () => {
+                overlay.style.opacity = '1';
+                overlay.style.pointerEvents = 'auto';
+                initMatrix();
+
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1000);
+
+                setTimeout(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.pointerEvents = 'none';
+                        cancelAnimationFrame(animationFrame);
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }, 500);
+                }, 1500);
+            });
+
+            window.addEventListener('resize', () => {
+                if (overlay.style.opacity === '1') {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+            });
+        })();
+
+        // Cookie Banner Logic
+        $(document).ready(function() {
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+
+            if (!getCookie("accepted_cookies")) {
+                $("#cookie-banner").removeClass("hidden").addClass("animate-bounce-subtle");
+            }
+
+            $("#accept-cookies").click(function() {
+                setCookie("accepted_cookies", "true", 30);
+                $("#cookie-banner").fadeOut(500);
+            });
+        });
+    </script>
+
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[250] p-4 lg:ml-20 hidden">
+        <div class="glass-terminal p-6 flex flex-col md:flex-row items-center gap-6 max-w-7xl mx-auto border-t-4 border-neon-green">
+            <div class="flex-1 font-mono text-xs lg:text-sm text-neutral-300">
+                <span class="text-neon-green font-bold">COOKIE_DETECTION:</span>
+                @CookiesResource.CookieBannerInfo
+                <a asp-controller="Home" asp-action="Privacy" class="text-neon-green hover:underline decoration-neon-green/30 underline-offset-4">@CookiesResource.ClickHere</a>
+                <br />
+                <span class="data-point block mt-2">@CookiesResource.CookieBannerWarning</span>
+            </div>
+            <button id="accept-cookies" class="whitespace-nowrap border-2 border-neon-green px-8 py-3 font-mono font-bold text-neon-green hover:bg-neon-green hover:text-charcoal transition-all shadow-[0_0_15px_rgba(55,210,138,0.2)]">
+                ACCEPT_PROTOCOL.EXE
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @@keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 2s infinite;
+        }
+    </style>
+</body>
+</html>

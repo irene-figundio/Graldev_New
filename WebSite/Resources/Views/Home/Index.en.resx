@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="HeroSubtitle" xml:space="preserve">
+    <value>ENTERPRISE_SYSTEMS_v2.0</value>
+  </data>
+  <data name="HeroLine1" xml:space="preserve">
+    <value>&gt; ARCHITECTING SEAMLESS CONNECTIVITY</value>
+  </data>
+  <data name="HeroLine2" xml:space="preserve">
+    <value>&gt; MAPPING DATA NEURAL NETWORKS</value>
+  </data>
+  <data name="HeroLine3" xml:space="preserve">
+    <value>&gt; EXECUTE INTEGRATION_PROTOCOL.EXE</value>
+  </data>
+  <data name="HeroButton1" xml:space="preserve">
+    <value>INITIATE_CONTACT()</value>
+  </data>
+  <data name="HeroButton2" xml:space="preserve">
+    <value>READ_DOCS.MD</value>
+  </data>
+  <data name="ServicesTag" xml:space="preserve">
+    <value>CORE_COMPUTE_SERVICES</value>
+  </data>
+  <data name="ServicesTitle" xml:space="preserve">
+    <value>Neural Solutions Matrix</value>
+  </data>
+  <data name="CarouselHint" xml:space="preserve">
+    <value>[ DRAG TO ROTATE DATASTREAM ]</value>
+  </data>
+  <data name="ViewDetails" xml:space="preserve">
+    <value>VIEW_DETAILS.EXE</value>
+  </data>
+  <data name="WhyChooseUsTag" xml:space="preserve">
+    <value>MODULE_02: WHY_CHOOSE_US</value>
+  </data>
+  <data name="WhyChooseUsTitle" xml:space="preserve">
+    <value>Strategic Innovation Logic</value>
+  </data>
+  <data name="WhyChooseUs1Title" xml:space="preserve">
+    <value>01. RAPID_DEPLOY</value>
+  </data>
+  <data name="WhyChooseUs1Text" xml:space="preserve">
+    <value>Automated microservice orchestration via proprietary nexus-pipes.</value>
+  </data>
+  <data name="WhyChooseUs2Title" xml:space="preserve">
+    <value>02. CYBER_SHIELD</value>
+  </data>
+  <data name="WhyChooseUs2Text" xml:space="preserve">
+    <value>End-to-end quantum-resistant packet encryption protocols.</value>
+  </data>
+  <data name="ManifestTag" xml:space="preserve">
+    <value>SYSTEM_CAPABILITIES_MANIFEST</value>
+  </data>
+  <data name="ManifestTitle" xml:space="preserve">
+    <value>Integration Ecosystem</value>
+  </data>
+  <data name="NodesTag" xml:space="preserve">
+    <value>ESTABLISHED_UPLINK_CHANNELS</value>
+  </data>
+  <data name="NodesTitle" xml:space="preserve">
+    <value>Strategic Nodes</value>
+  </data>
+  <data name="ContactTag" xml:space="preserve">
+    <value>USER_INPUT_REQUIRED</value>
+  </data>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Initiate_Handshake</value>
+  </data>
+  <data name="FormOrg" xml:space="preserve">
+    <value>ORG_NAME</value>
+  </data>
+  <data name="FormEmail" xml:space="preserve">
+    <value>EMAIL_ENDPOINT</value>
+  </data>
+  <data name="FormPayload" xml:space="preserve">
+    <value>REQ_PAYLOAD</value>
+  </data>
+  <data name="FormSubmit" xml:space="preserve">
+    <value>EXECUTE_REQUEST.SEND()</value>
+  </data>
+  <data name="Geolocation" xml:space="preserve">
+    <value>GEOLOCATION: 51.505, -0.09</value>
+  </data>
+  <data name="HQ" xml:space="preserve">
+    <value>HQ_LONDON_CANARY_WHARF</value>
+  </data>
+  <data name="StatusActive" xml:space="preserve">
+    <value>ONLINE_ACTIVE</value>
+  </data>
+</root>
