@@ -7,7 +7,97 @@
 
 <section class="relative min-h-[90vh] lg:min-h-screen flex items-center px-6 lg:px-12 overflow-hidden border-b border-neon-green/10">
     <div class="absolute right-[-20%] lg:right-[-10%] top-1/2 -translate-y-1/2 w-full lg:w-2/3 h-[60%] lg:h-[80%] opacity-30 lg:opacity-40 pointer-events-none">
-        <img alt="Digital Blueprint Wireframe" class="w-full h-full object-contain mix-blend-screen grayscale contrast-150 brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDux_tq-j7grrdes9ZWlRZO7js_HTW7y_7qnbalJa5sAqIiSWQJBWMSX4_HDHjfa5rReEyHBlG1yI0D3mcP0_FRtvl9DLzLCVaFeGOO7_nktJ5727BLZKIhPy3F_pK5l-CEiOcxoCCuOF1u8gaPpvquD7AvArdaXo_qmFLSqzLxPniH7lhhctM6TNmSXrfhUR_fdlqWnwgBLpWVg7fkCt2atgOpgmFJ_OTvHn5q8ib8tP6YReVWFc4XxxEp_OEl19e5yRJopXBToNQ" style="filter: sepia(100%) saturate(1000%) hue-rotate(80deg);" />
+        <canvas class="w-full h-full" id="particle-emblem-canvas"></canvas>
+        <script>
+            (function () {
+                const canvas = document.getElementById('particle-emblem-canvas');
+                const ctx = canvas.getContext('2d');
+                let width, height, particles = [];
+                const particleCount = 200;
+                const color = '#37D28A';
+                let forming = false;
+                let timer = 0;
+
+                // Geometric emblem shape (Points for a stylized 'G' or Diamond)
+                const emblemPoints = [];
+                function generateEmblemPoints() {
+                    emblemPoints.length = 0;
+                    const centerX = width * 0.5;
+                    const centerY = height * 0.5;
+                    const size = Math.min(width, height) * 0.3;
+
+                    // Create a diamond-like hex shape
+                    for (let i = 0; i < particleCount; i++) {
+                        const angle = (i / particleCount) * Math.PI * 2;
+                        const r = (i % 2 === 0) ? size : size * 0.8;
+                        emblemPoints.push({
+                            x: centerX + Math.cos(angle) * r,
+                            y: centerY + Math.sin(angle) * r
+                        });
+                    }
+                }
+
+                class Particle {
+                    constructor() {
+                        this.init();
+                    }
+                    init() {
+                        this.x = Math.random() * width;
+                        this.y = Math.random() * height;
+                        this.vx = (Math.random() - 0.5) * 1.5;
+                        this.vy = (Math.random() - 0.5) * 1.5;
+                        this.size = Math.random() * 2 + 1;
+                    }
+                    update(target) {
+                        if (forming && target) {
+                            const dx = target.x - this.x;
+                            const dy = target.y - this.y;
+                            this.x += dx * 0.05;
+                            this.y += dy * 0.05;
+                        } else {
+                            this.x += this.vx;
+                            this.y += this.vy;
+
+                            if (this.x < 0 || this.x > width) this.vx *= -1;
+                            if (this.y < 0 || this.y > height) this.vy *= -1;
+                        }
+                    }
+                    draw() {
+                        ctx.fillStyle = color;
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = color;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                function resize() {
+                    width = canvas.width = canvas.offsetWidth;
+                    height = canvas.height = canvas.offsetHeight;
+                    generateEmblemPoints();
+                    particles = Array.from({ length: particleCount }, () => new Particle());
+                }
+
+                function animate() {
+                    ctx.clearRect(0, 0, width, height);
+
+                    timer++;
+                    if (timer % 400 === 0) forming = !forming;
+
+                    particles.forEach((p, i) => {
+                        p.update(emblemPoints[i]);
+                        p.draw();
+                    });
+
+                    requestAnimationFrame(animate);
+                }
+
+                window.addEventListener('resize', resize);
+                resize();
+                animate();
+            })();
+        </script>
     </div>
     <div class="container mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div class="monitor-frame glass-terminal p-6 lg:p-10">
@@ -200,74 +290,67 @@
     </div>
 </section>
 
-<!-- NEW PARTNER SECTION -->
-<section class="py-24 relative overflow-hidden bg-black/40 border-y border-neon-green/10">
+<!-- UPDATED PARTNER SECTION WITH 3D SPIRAL -->
+<section class="py-24 relative overflow-hidden bg-black/40 border-y border-neon-green/10" id="partners-carousel-section">
+    <!-- Pulsing Background Pattern -->
     <div class="absolute inset-0 opacity-10 animate-pulse-slow pointer-events-none">
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, #37D28A 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center mb-16">
-            <div class="data-point mb-4">@Localizer["NodesTag"]</div>
-            <h2 class="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase mb-4">@Html.Raw(Localizer["NodesTitle"].Value)</h2>
-            <div class="h-0.5 w-24 bg-neon-green/30 mx-auto"></div>
-        </div>
-        <div class="relative w-full overflow-hidden group">
-            <div class="flex whitespace-nowrap animate-scroll gap-12 lg:gap-24 items-center py-8">
-                <!-- Set 1 -->
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
-                </div>
-                <!-- Duplicate for seamless loop -->
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">MICROSOFT_NODE</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">UNISOB_UPLINK</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">FEEM_CORE</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">BETFLAG_STRAT</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">KEROS_ARRAY</span>
-                </div>
-                <div class="flex flex-col items-center justify-center min-w-[200px] glitch-hover cursor-pointer">
-                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200" />
-                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400">ASTRA_RELAY</span>
+    <div class="container mx-auto px-6 relative z-10 text-center mb-16">
+        <div class="data-point mb-4">@Localizer["NodesTag"]</div>
+        <h2 class="text-4xl md:text-5xl font-display font-black tracking-tighter uppercase mb-2">@Html.Raw(Localizer["NodesTitle"].Value)</h2>
+        <p class="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">[ SYNC_NODES_ACTIVE ]</p>
+    </div>
+    <!-- Interactive 3D Carousel for Partners -->
+    <div class="relative h-[350px] lg:h-[450px] w-full max-w-5xl mx-auto carousel-container select-none" id="partners-carousel-wrapper">
+        <div class="carousel-inner w-full h-full relative" id="partners-carousel-inner">
+            <!-- Partner Node 1 -->
+            <div class="carousel-item partner-item group" data-index="0">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/LogoMicrosoft.png" alt="Microsoft" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">MICROSOFT_NODE</span>
                 </div>
             </div>
-            <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-charcoal to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-charcoal to-transparent z-10 pointer-events-none"></div>
+            <!-- Partner Node 2 -->
+            <div class="carousel-item partner-item group" data-index="1">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/logo_unisob.png" alt="Unisob" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">UNISOB_UPLINK</span>
+                </div>
+            </div>
+            <!-- Partner Node 3 -->
+            <div class="carousel-item partner-item group" data-index="2">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/logo_feem.jpg" alt="FEEM" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">FEEM_CORE</span>
+                </div>
+            </div>
+            <!-- Partner Node 4 -->
+            <div class="carousel-item partner-item group" data-index="3">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/logo_betflag.png" alt="BetFlag" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">BETFLAG_STRAT</span>
+                </div>
+            </div>
+            <!-- Partner Node 5 -->
+            <div class="carousel-item partner-item group" data-index="4">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/logo_keros.png" alt="Keros" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">KEROS_ARRAY</span>
+                </div>
+            </div>
+            <!-- Partner Node 6 -->
+            <div class="carousel-item partner-item group" data-index="5">
+                <div class="partner-glass-card group-hover:border-neon-green/50 hover:shadow-[0_0_20px_rgba(55,210,138,0.2)]">
+                    <img src="~/asset/img/logo_astra.png" alt="Astra" class="h-12 w-auto mb-4 hologram-logo object-contain grayscale brightness-200 group-hover:scale-110 transition-transform duration-500" />
+                    <span class="font-mono text-xs font-bold tracking-widest text-neutral-400 group-hover:text-neon-green transition-colors uppercase">ASTRA_RELAY</span>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Vignette Overlays -->
+    <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-charcoal to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-charcoal to-transparent z-10 pointer-events-none"></div>
 </section>
 
 <section class="py-20 lg:py-32 px-6 lg:px-12">
@@ -298,7 +381,7 @@
                     <div id="formResponse" class="mt-4 font-mono text-xs"></div>
                 </div>
                 <div class="relative bg-neutral-900 overflow-hidden min-h-[300px]">
-                    <img alt="Map Visualization" class="w-full h-full object-cover opacity-30 grayscale sepia hue-rotate-[80deg] saturate-[2]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_tZHepD0uhzq_aVxslFV1ug16edQDuNaP4QhxBAyRONC8xOIL7HAYirlB71D5IqaUvJA8cIYfKIFDw7aOYxTMyCVKrOurVWS73UR7emTi1m29c6JEmubXWHEy0Ri-bQIIPRYMls5toG0BUfYr17iftEnOzk2_fdEeOC2IAXwCleJaK-bo5CiLWLxLI6rYQhskoA4TxGmRzyRLvg6hPNdDTKIak9Cf333ovIrpZBZDmWFgHwQAmrLmBEot0D1nGw7RUv-fmOeIQ84" />
+                    <iframe allowfullscreen="" class="w-full h-full object-cover opacity-50 contrast-125" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.288944510444!2d-0.0211116!3d51.5049585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487602ba441315e5%3A0x6b77e3848b64e526!2sCanary%20Wharf%2C%20London!5e0!3m2!1sen!2suk!4v1710000000000!5m2!1sen!2suk" style="filter: grayscale(1) invert(1) sepia(1) hue-rotate(80deg) saturate(2); border: 0;"></iframe>
                     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at center, transparent, #0a0a0c);"></div>
                     <div class="absolute bottom-6 left-6 border-l-2 border-neon-green pl-4 bg-charcoal/80 p-4 backdrop-blur-sm">
                         <div class="data-point">@Localizer["Geolocation"]</div>
@@ -317,127 +400,143 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('carousel-wrapper');
-            const inner = document.getElementById('carousel-inner');
-            const items = document.querySelectorAll('.carousel-item');
-            const count = items.length;
+            // Reusable Carousel Logic
+            function initCarousel(wrapperId, innerId, itemClass, radiusSmall, radiusLarge, spiralSmall, spiralLarge) {
+                const container = document.getElementById(wrapperId);
+                const inner = document.getElementById(innerId);
+                const items = container.querySelectorAll('.' + itemClass);
+                const count = items.length;
 
-            let rotation = 0;
-            let isDragging = false;
-            let startX = 0;
-            let currentRotation = 0;
-            let autoPlayInterval;
+                let rotation = 0;
+                let isDragging = false;
+                let startX = 0;
+                let currentRotation = 0;
+                let autoPlayInterval;
 
-            function getRadius() {
-                return window.innerWidth < 768 ? 200 : 380;
-            }
+                function getRadius() {
+                    return window.innerWidth < 768 ? radiusSmall : radiusLarge;
+                }
 
-            const getSpiralFactor = () => window.innerWidth < 768 ? 30 : 45;
+                function getSpiralFactor() {
+                    return window.innerWidth < 768 ? spiralSmall : spiralLarge;
+                }
 
-            function updateCarousel() {
-                const radius = getRadius();
-                const spiralFactor = getSpiralFactor();
+                function updateCarousel() {
+                    const radius = getRadius();
+                    const spiralFactor = getSpiralFactor();
 
-                items.forEach((item, i) => {
-                    const angle = (i * (360 / count)) + rotation;
-                    const rad = angle * (Math.PI / 180);
+                    items.forEach((item, i) => {
+                        const angle = (i * (360 / count)) + rotation;
+                        const rad = angle * (Math.PI / 180);
 
-                    const x = Math.sin(rad) * radius;
-                    const z = Math.cos(rad) * radius;
-                    const y = Math.sin(rad) * spiralFactor;
+                        const x = Math.sin(rad) * radius;
+                        const z = Math.cos(rad) * radius;
+                        const y = Math.sin(rad) * spiralFactor;
 
-                    const cardRotation = angle;
-                    const normalizedZ = (z + radius) / (2 * radius);
+                        const cardRotation = angle;
+                        const normalizedZ = (z + radius) / (2 * radius);
 
-                    const scale = 0.45 + (normalizedZ * 0.55);
-                    const opacity = 0.15 + (normalizedZ * 0.85);
-                    const blur = (1 - normalizedZ) * 6;
+                        const scale = 0.45 + (normalizedZ * 0.55);
+                        const opacity = 0.15 + (normalizedZ * 0.85);
+                        const blur = (1 - normalizedZ) * 6;
 
-                    item.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${cardRotation}deg) scale(${scale})`;
-                    item.style.opacity = opacity;
-                    item.style.filter = `blur(${blur}px)`;
-                    item.style.zIndex = Math.round(z + radius);
+                        item.style.transform = `translate3d(${x}px, ${y}px, ${z}px) rotateY(${cardRotation}deg) scale(${scale})`;
+                        item.style.opacity = opacity;
+                        item.style.filter = `blur(${blur}px)`;
+                        item.style.zIndex = Math.round(z + radius);
 
-                    if (z > radius * 0.85) {
-                        item.classList.add('active');
-                        item.style.filter = 'blur(0px)';
-                        item.style.opacity = '1';
-                    } else {
-                        item.classList.remove('active');
+                        if (z > radius * 0.85) {
+                            item.classList.add('active');
+                            item.style.filter = 'blur(0px)';
+                            item.style.opacity = '1';
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                }
+
+                function rotate(delta) {
+                    rotation += delta;
+                    updateCarousel();
+                }
+
+                container.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.clientX;
+                    currentRotation = rotation;
+                    clearInterval(autoPlayInterval);
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.clientX - startX;
+                    rotation = currentRotation + (deltaX * 0.25);
+                    updateCarousel();
+                });
+
+                window.addEventListener('mouseup', () => {
+                    if (isDragging) {
+                        isDragging = false;
+                        startAutoPlay();
                     }
                 });
-            }
 
-            function rotate(delta) {
-                rotation += delta;
-                updateCarousel();
-            }
+                container.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].clientX;
+                    currentRotation = rotation;
+                    clearInterval(autoPlayInterval);
+                });
 
-            container.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.clientX;
-                currentRotation = rotation;
-                clearInterval(autoPlayInterval);
-            });
+                container.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    const deltaX = e.touches[0].clientX - startX;
+                    rotation = currentRotation + (deltaX * 0.25);
+                    updateCarousel();
+                });
 
-            window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-                const deltaX = e.clientX - startX;
-                rotation = currentRotation + (deltaX * 0.25);
-                updateCarousel();
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (isDragging) {
+                container.addEventListener('touchend', () => {
                     isDragging = false;
                     startAutoPlay();
+                });
+
+                function startAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(() => {
+                        rotate(-0.15);
+                    }, 30);
                 }
-            });
 
-            container.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                startX = e.touches[0].clientX;
-                currentRotation = rotation;
-                clearInterval(autoPlayInterval);
-            });
-
-            container.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                const deltaX = e.touches[0].clientX - startX;
-                rotation = currentRotation + (deltaX * 0.25);
                 updateCarousel();
-            });
-
-            container.addEventListener('touchend', () => {
-                isDragging = false;
                 startAutoPlay();
-            });
 
-            document.getElementById('prev-btn').onclick = () => {
-                clearInterval(autoPlayInterval);
-                rotate(360/count);
-                startAutoPlay();
-            };
-            document.getElementById('next-btn').onclick = () => {
-                clearInterval(autoPlayInterval);
-                rotate(-360/count);
-                startAutoPlay();
-            };
+                window.addEventListener('resize', updateCarousel);
 
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') rotate(15);
-                if (e.key === 'ArrowRight') rotate(-15);
-            });
-
-            function startAutoPlay() {
-                clearInterval(autoPlayInterval);
-                autoPlayInterval = setInterval(() => {
-                    rotate(-0.15);
-                }, 30);
+                return { rotate, startAutoPlay, stopAutoPlay: () => clearInterval(autoPlayInterval), count };
             }
 
-            updateCarousel();
-            startAutoPlay();
+            // Init Services Carousel
+            const servicesCarousel = initCarousel('carousel-wrapper', 'carousel-inner', 'carousel-item', 200, 380, 30, 45);
+
+            // Service Nav Buttons
+            document.getElementById('prev-btn').onclick = () => {
+                servicesCarousel.stopAutoPlay();
+                servicesCarousel.rotate(360 / servicesCarousel.count);
+                servicesCarousel.startAutoPlay();
+            };
+            document.getElementById('next-btn').onclick = () => {
+                servicesCarousel.stopAutoPlay();
+                servicesCarousel.rotate(-360 / servicesCarousel.count);
+                servicesCarousel.startAutoPlay();
+            };
+
+            // Init Partners Carousel
+            initCarousel('partners-carousel-wrapper', 'partners-carousel-inner', 'partner-item', 160, 320, 20, 35);
+
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') servicesCarousel.rotate(15);
+                if (e.key === 'ArrowRight') servicesCarousel.rotate(-15);
+            });
 
             let resizeTimer;
             window.addEventListener('resize', () => {

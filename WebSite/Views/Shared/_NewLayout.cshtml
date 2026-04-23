@@ -109,12 +109,25 @@
             backface-visibility: hidden;
             transition: opacity 0.5s, filter 0.5s, box-shadow 0.3s, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        /* Partner specific item sizing */
+        .partner-item {
+            margin-left: -80px;
+            margin-top: -100px;
+            width: 160px;
+            height: 200px;
+        }
         @@media (max-width: 640px) {
             .carousel-item {
                 width: 200px;
                 height: 280px;
                 margin-left: -100px;
                 margin-top: -140px;
+            }
+            .partner-item {
+                width: 140px;
+                height: 180px;
+                margin-left: -70px;
+                margin-top: -90px;
             }
         }
         .carousel-item.active {
@@ -123,6 +136,10 @@
         .glass-card {
             @@apply w-full h-full p-6 lg:p-8 flex flex-col items-center text-center justify-center border border-white/10 backdrop-blur-2xl bg-charcoal/40 rounded-xl overflow-hidden;
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .partner-glass-card {
+            @@apply w-full h-full p-6 flex flex-col items-center text-center justify-center border border-neon-green/20 backdrop-blur-xl bg-white/5 rounded-lg overflow-hidden transition-all duration-500;
+            box-shadow: 0 0 20px rgba(55, 210, 138, 0.05);
         }
         .spiral-bg {
             background: radial-gradient(circle at center, rgba(55, 210, 138, 0.1) 0%, transparent 70%);
@@ -156,6 +173,17 @@
 </head>
 <body class="selection:bg-neon-green selection:text-charcoal pb-16 lg:pb-0">
     <nav class="side-nav">
+        <div class="lg:mb-8 flex items-center justify-center">
+            <div class="group relative cursor-pointer flex flex-col items-center">
+                <span class="material-symbols-outlined text-neutral-500 group-hover:text-neon-green transition-colors text-xl mb-1 green-text-glow">language</span>
+                <div class="flex gap-1 font-mono text-[8px] font-bold tracking-tighter">
+                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN" class="text-neutral-500 hover:text-neon-green transition-colors">EN</a>
+                    <span class="text-neutral-700">|</span>
+                    <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT" class="text-neutral-500 hover:text-neon-green transition-colors">IT</a>
+                </div>
+                <span class="hidden lg:block absolute left-16 top-1/2 -translate-y-1/2 px-2 py-1 bg-neon-green text-charcoal text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">LANG_SYNC</span>
+            </div>
+        </div>
         <div class="lg:mb-12 flex items-center justify-center">
             <div class="w-8 h-8 lg:w-10 lg:h-10 border border-neon-green flex items-center justify-center rotate-45 group hover:rotate-90 transition-transform cursor-pointer">
                 <span class="material-symbols-outlined -rotate-45 text-neon-green group-hover:scale-110 text-xl lg:text-2xl">grid_view</span>
@@ -176,8 +204,6 @@
             </a>
         </div>
         <div class="lg:mt-auto flex flex-col items-center justify-center gap-4 mb-4">
-            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="IT" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">IT</a>
-            <a asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="EN" class="font-mono text-[10px] font-bold hover:text-neon-green transition-colors">EN</a>
             <button class="w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-neutral-700 flex items-center justify-center hover:border-neon-green transition-colors">
                 <span class="material-symbols-outlined text-xs">power_settings_new</span>
             </button>
